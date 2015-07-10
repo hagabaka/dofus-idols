@@ -39,6 +39,11 @@
       .idol-name:last-child::after {
         content: ': ';
       }
+
+      #notes {
+        position: absolute;
+        bottom: 0;
+      }
     </style>
   </head>
 
@@ -63,6 +68,14 @@
       </ul>
     </div>
 
+    <div id='notes'>
+      <p>This is a calculator for <a href='http://www.dofus.com/'>Dofus</a> idol scores.
+      To enter idols in the above box, type and press Enter. If you make a typo and the box
+      stops working, reload the page (I'm working on fixing this). Data is mostly from
+      <a href='tofus.fr/fiches/idoles.php'>Tofus.fr</a>, and is currently missing for
+      most "Major" and below idols.
+      </p>
+    </div>
     <script src='viewModel.js'></script>
     <script type='text/javascript'>
       var $combinationEntry = $('#combination-entry');
