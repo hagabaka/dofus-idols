@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js'></script>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+    <script src='model.js'></script>
+
+    <style>
+      #entry {
+        width: 50%;
+        float: left;
+      }
+      #combination-entry {
+        width: 100%;
+      }
+      #select2-combination-entry-results li {
+        display: inline-block;
+        min-width: 18%;
+      }
+
+      #display {
+        padding-left: 60%;
+      }
+      #score {
+        font-size: xx-large;
+      }
+      #synergies, #synergies ul {
+        list-style: none;
+        padding-left: 0;
+      }
+      .idol-name, .idol-names {
+        display: inline;
+      }
+      .idol-name::after {
+        content: ' + ';
+      }
+      .idol-name:last-child::after {
+        content: ': ';
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id='entry'>
+      <select id='combination-entry'
+        data-bind='foreach: visibleIdols, selectedOptions: combinationEntry' multiple>
+        <option data-bind='attr: {value: name}, text: name'></option>
+      </select>
+    </div>
+
+    <div id='display'>
+      <span id='score' data-bind='text: score()'></span>
+
+      <ul id='synergies' data-bind='foreach: synergies()'>
+        <li class='synergy'>
+          <ul class='idol-names' data-bind='foreach: idols'>
+            <li class='idol-name' data-bind='text: $data'></li>
+          </ul>
+          <span class='synergy-value' data-bind='text: value'></span>
+        </li>
+      </ul>
+    </div>
+
+    <script src='viewModel.js'></script>
+    <script type='text/javascript'>
+      var $combinationEntry = $('#combination-entry');
+      $combinationEntry.select2({
+        maximumSelectionLength: 6,
+        tags: true,
+        createSearchChoice: function() { return null; },
+        placeholder: 'Enter or select idols',
+      });
+      $combinationEntry.select2('open');
+    </script>
+  </body>
+</html>
