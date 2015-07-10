@@ -8,11 +8,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
     <script src='model.js'></script>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
       #entry {
         width: 50%;
         float: left;
       }
+      #display {
+        padding-left: 60%;
+      }
+
+      @media (max-width: 600px) {
+        #entry {
+          width: 100%;
+          float: none;
+        }
+        #display {
+          padding-left: 0;
+        }
+        #score {
+          position: absolute;
+          bottom: 0;
+        }
+        #synergies {
+          position: absolute;
+          bottom: 2em;
+        }
+        .select2-container {
+          font-size: x-large;
+        }
+        #notes {
+          display: none;
+        }
+      }
+
       #combination-entry {
         width: 100%;
       }
@@ -21,9 +50,6 @@
         min-width: 18%;
       }
 
-      #display {
-        padding-left: 60%;
-      }
       #score {
         font-size: xx-large;
       }
