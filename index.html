@@ -8,7 +8,7 @@
     <link href='https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.1/css/selectize.min.css' rel='stylesheet' />
     <script src='model.js'></script>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
     <style>
       #entry {
         width: 50%;
@@ -42,8 +42,9 @@
           display: inline-block;
           min-width: 23%;
         }
-        .selectize-controll {
+        .selectize-dropdown, .selectize-input {
           font-size: x-large;
+          line-height: 1em;
         }
         #notes {
           display: none;
@@ -53,9 +54,14 @@
       .selectize-dropdown-content {
         max-height: 500px;
       }
-      @media (max-height: 600px) {
+      @media (max-height: 400px) {
         .selectize-dropdown-content {
-          max-height: 300px;
+          max-height: 150px;
+        }
+      }
+      @media (min-height: 401px and max-height: 600px) {
+        .selectize-dropdown-content {
+          max-height: 250px;
         }
       }
 
