@@ -16,7 +16,9 @@
     <div id='entry'>
       <select id='combination-entry'
         data-bind='foreach: visibleIdols, selectedOptions: combinationEntry' multiple>
-        <option data-bind='attr: {value: name}, text: name'></option>
+        <option
+          data-bind='attr: {value: name, "data-data": JSON.stringify($data)}, text: name'>
+        </option>
       </select>
     </div>
 
