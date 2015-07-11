@@ -30,3 +30,38 @@ function HashTable(initialElements, hashFunction) {
   });
 }
 
+function range(from, to) {
+  step = (to - from) / 3;
+  return [from, from + step, from + step + step, to];
+}
+
+function isMember(element, set) {
+  return set.indexOf(element) >= 0;
+}
+
+function isSubset(smallerSet, biggerSet) {
+  return smallerSet.every(function(element) {
+    return isMember(element, biggerSet);
+  });
+}
+
+// from http://stackoverflow.com/a/2450976
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex ;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
