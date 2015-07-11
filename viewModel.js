@@ -7,7 +7,7 @@ var ViewModel = function() {
     if(entry === '') {
       return [];
     } else {
-      return entry.split(',').map(function(name) {
+      return entry.split(/\s*,\s*/).map(function(name) {
         return idolNamed[name];
       });
     }

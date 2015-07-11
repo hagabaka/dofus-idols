@@ -93,9 +93,18 @@ html, body {
   padding-left: 0.5em;
 }
 
+#combination-display {
+  display: block;
+  width: 100%;
+  border: none;
+}
 .guessed {
   font-style: italic;
 }
 .negative {
   color: red;
+}
+
+* {
+  font-family: serif;
 }

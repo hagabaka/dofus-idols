@@ -20,6 +20,8 @@ Selectize.define('only_close_when_full', function() {
 var $combinationEntry = $('#combination-entry');
 $combinationEntry.selectize({
   maxItems: 6,
+  delimiter: ', ',
+  splitOn: /\s*,\s*/,
   options: allIdols,
   valueField: 'name',
   labelField: 'name',
