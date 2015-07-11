@@ -30,7 +30,7 @@
       </p>
       <!-- /ko -->
       <ul id='synergies' data-bind='foreach: synergies()'>
-        <li class='synergy' data-bind='css: {guessed: guessed}'>
+        <li class='synergy' data-bind='css: {guessed: guessed, negative: negative}'>
           <ul class='idol-names' data-bind='foreach: idols'>
             <li class='idol-name' data-bind='text: name'></li>
           </ul>

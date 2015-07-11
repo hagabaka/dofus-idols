@@ -96,3 +96,6 @@ html, body {
 .guessed {
   font-style: italic;
 }
+.negative {
+  color: red;
+}

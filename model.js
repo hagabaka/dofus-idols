@@ -804,6 +804,9 @@ synergies.forEach(function(synergy) {
 });
 synergies = synergies.concat(guessedSynergies.elements());
 synergies = new HashTable(synergies, hashSynergy).elements();
+synergies.forEach(function(synergy) {
+  synergy.negative = synergy.value < 1;
+});
 
 function totalScore(idols, usedSynergy) {
   var scores = {};
