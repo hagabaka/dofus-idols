@@ -24,15 +24,8 @@
 
       <input id='combination-display' readonly data-bind='value: combinationEntry'
              onclick="this.select()">
-      <!-- ko if: guessed -->
-      <p>We currently do not have synergy values for most Minor to Major idols,
-      so some of the synergy values had to be <span class='guessed'>guessed</span>,
-      based on the known synergy values from Great idols. Therefore the calculated score
-      is probably wrong.
-      </p>
-      <!-- /ko -->
       <ul id='synergies' data-bind='foreach: synergies()'>
-        <li class='synergy' data-bind='css: {guessed: guessed, negative: negative}'>
+        <li class='synergy' data-bind='css: {negative: negative}'>
           <ul class='idol-names' data-bind='foreach: idols'>
             <li class='idol-name' data-bind='text: name'></li>
           </ul>
