@@ -182,24 +182,22 @@ function isSubset(smallerSet, biggerSet) {
 }
 
 function totalScore(idols, usedSynergy) {
-  var names = [];
   var scores = {};
-  idols.forEach(function(idol, index) {
-    names.push(idol.name);
+  idols.forEach(function(idol) {
     scores[idol.name] = idol.score;
   });
   synergies.forEach(function(synergy) {
-    if(isSubset(synergy.idols, names)) {
+    if(isSubset(synergy.idols, idols)) {
       if(usedSynergy) {
         usedSynergy(synergy);
       }
-      synergy.idols.forEach(function(name) {
-        scores[name] *= synergy.value;
+      synergy.idols.forEach(function(idol) {
+        scores[idol.name] *= synergy.value;
       });
     }
   });
-  return names.reduce(function(sum, name) {
-    return sum + Math.floor(scores[name]);
+  return idols.reduce(function(sum, idol) {
+    return sum + Math.floor(scores[idol.name]);
   }, 0);
 }
 exports.totalScore = totalScore;
