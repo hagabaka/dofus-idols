@@ -15,12 +15,8 @@
 
   <body>
     <div id='entry'>
-      <select id='combination-entry'
-        data-bind='foreach: visibleIdols, selectedOptions: combinationEntry' multiple>
-        <option
-          data-bind='attr: {value: name, "data-data": JSON.stringify($data)}, text: name'>
-        </option>
-      </select>
+      <input id='combination-entry' type='text' placeholder='Enter up to 6 idols'
+             data-bind='value: combinationEntry'>
     </div>
 
     <div id='display'>
