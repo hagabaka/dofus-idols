@@ -18,7 +18,7 @@ var nonFamilies = [
 {name: 'Penitent', score: 15, level: 123, group: true,  ineligible: ['Kolosso']},
 {name: 'Hoskar',   score: 20, level: 120, group: true,  ineligible: ['Nileza']},
 {name: 'Korria',   score: 20, level: 163, group: true,  ineligible: []},
-{name: 'Vaude',    score: 20, level: 70,  group: true,  ineligible: []},
+{name: 'Vood',    score: 20, level: 70,  group: true,  ineligible: []},
 {name: 'Binar',    score: 25, level: 170, group: true,  ineligible: []},
 {name: 'Ultram',   score: 25, level: 130, group: true,  ineligible: ['Protozorreur', 'Korriander']},
 {name: 'Nahuatl',  score: 50, level: 180, group: true,  ineligible: ['Sylargh', 'Protozorreur', 'Obsidemon', 'Buck Anear', 'Kimbo', 'Vortex', 'Puppet Master']},
@@ -31,7 +31,7 @@ function range(from, to) {
 
 var families = [
 {name: 'Oaf',     score: range(10, 40),    level: range(25, 145),   group: false, ineligible: ['Tynril']},
-{name: 'Cafra',   score: range(15, 45),    level: range(68, 188),   group: false, ineligible: ['Tynril']},
+{name: 'Rocha',   score: range(15, 45),    level: range(68, 188),   group: false, ineligible: ['Tynril']},
 {name: 'Dynamo',  score: range(15, 45),    level: range(1, 121),    group: false, ineligible: ['Giant Kralove']},
 {name: 'Horiz',   score: range(15, 45),    level: range(35, 155),   group: false, ineligible: ['Tynril']},
 {name: 'Sak',     score: range(15, 45),    level: range(56, 176),   group: false, ineligible: ['Tynril']},
