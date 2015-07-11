@@ -6,10 +6,12 @@ function HashTable(initialElements, hashFunction) {
     return elements;
   };
 
-  // Add the given element to the hashTable
+  // Add the given element to the hashTable, if not already included
   this.push = function push(element) {
-    this[hashFunction(element)] = element;
-    elements.push(element);
+    if(!this.include(element)) {
+      this[hashFunction(element)] = element;
+      elements.push(element);
+    }
   };
 
   // Whether the hashTable contains an element with identical hash as given element

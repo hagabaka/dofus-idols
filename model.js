@@ -803,8 +803,7 @@ synergies.forEach(function(synergy) {
   });
 });
 synergies = synergies.concat(guessedSynergies.elements());
-window.guessedSynergies = guessedSynergies;
-window.knownSynergies = knownSynergies;
+synergies = new HashTable(synergies, hashSynergy).elements();
 
 function totalScore(idols, usedSynergy) {
   var scores = {};
