@@ -1,10 +1,13 @@
 html, body {
   height: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 #entry {
   width: 50%;
   float: left;
+  padding: 0.5em;
 }
 #display {
   padding-left: 60%;
@@ -16,7 +19,7 @@ html, body {
 
 @media (max-width: 600px) {
   #entry {
-    width: 100%;
+    width: 95%;
     float: none;
   }
   #display {
@@ -87,4 +90,5 @@ html, body {
 #notes {
   position: absolute;
   bottom: 0;
+  padding-left: 0.5em;
 }
