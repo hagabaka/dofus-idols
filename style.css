@@ -10,7 +10,7 @@ html, body {
   padding: 0.5em;
 }
 #display {
-  padding-left: 60%;
+  padding: 0.55em 0.5em 0.5em 60%;
 }
 .selectize-dropdown [data-selectable] {
   display: inline-block;
