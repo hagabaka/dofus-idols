@@ -12,6 +12,11 @@ var ViewModel = function() {
       self.synergies.push(synergy);
     });
   });
+  this.guessed = ko.computed(function() {
+    return self.synergies().some(function(synergy) {
+      return synergy.guessed;
+    });
+  });
 };
 
 ko.applyBindings(new ViewModel());

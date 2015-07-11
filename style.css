@@ -92,3 +92,7 @@ html, body {
   bottom: 0;
   padding-left: 0.5em;
 }
+
+.guessed {
+  font-style: italic;
+}

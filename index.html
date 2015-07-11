@@ -6,6 +6,7 @@
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.1/js/standalone/selectize.min.js'></script>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.1/css/selectize.min.css' rel='stylesheet' />
+    <script src='utilities.js'></script>
     <script src='model.js'></script>
 
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
@@ -25,8 +26,15 @@
     <div id='display'>
       <span id='score' data-bind='text: score()'></span>
 
+      <!-- ko if: guessed -->
+      <p>We currently do not have synergy values for most Minor to Major idols,
+      so some of the synergy values had to be <span class='guessed'>guessed</span>,
+      based on the known synergy values from Great idols. Therefore the calculated score
+      is probably wrong.
+      </p>
+      <!-- /ko -->
       <ul id='synergies' data-bind='foreach: synergies()'>
-        <li class='synergy'>
+        <li class='synergy' data-bind='css: {guessed: guessed}'>
           <ul class='idol-names' data-bind='foreach: idols'>
             <li class='idol-name' data-bind='text: name'></li>
           </ul>

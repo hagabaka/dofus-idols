@@ -188,6 +188,56 @@ function isSubset(smallerSet, biggerSet) {
   });
 }
 
+// Attach a string key to each synergy to help with searching
+synergies.forEach(function(synergy) {
+  synergy.guessed = false;
+});
+
+function hashSynergy(synergy) {
+  return synergy.idols.map(function(idol) {
+    return idol.name;
+  }).sort().join('|');
+}
+var knownSynergies = new HashTable(synergies, hashSynergy);
+var guessedSynergies = new HashTable([], hashSynergy);
+
+// Sibling of an idol with given grade
+function otherGrade(idol, grade) {
+  if(isMember(idol, nonFamilies)) {
+    return idol;
+  } else {
+    return idolNamed[ idol.name.replace(/^Minor |Major |Great |/, grade) ];
+  }
+}
+
+// We are missing synergy data for most Minor to Major idols.
+// Try to fill them in with Great idol data as fallback.
+synergies.forEach(function(synergy) {
+  grades.forEach(function(firstGrade) {
+    var firstIdol = otherGrade(synergy.idols[0], firstGrade);
+    grades.forEach(function(secondGrade) {
+      var secondIdol = otherGrade(synergy.idols[1], secondGrade);
+
+      // An idol can't have synergy with itself (grade sensitive)
+      if(firstIdol.name !== secondIdol.name) {
+        var guessedSynergy = {
+          idols: [firstIdol, secondIdol],
+          guessed: true,
+          value: synergy.value
+        };
+        // Add the guessed synergy if it's not in the set of synergies
+        if(!knownSynergies.include(guessedSynergy) &&
+           !guessedSynergies.include(guessedSynergy)) {
+          guessedSynergies.push(guessedSynergy);
+        }
+      }
+    });
+  });
+});
+synergies = synergies.concat(guessedSynergies.elements());
+window.guessedSynergies = guessedSynergies;
+window.knownSynergies = knownSynergies;
+
 function totalScore(idols, usedSynergy) {
   var scores = {};
   idols.forEach(function(idol) {
