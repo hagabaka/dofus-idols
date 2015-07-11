@@ -14,19 +14,5 @@ var ViewModel = function() {
   });
 };
 
-ko.bindingHandlers.chosen = {
-  init: function(element, valueAccessor, allBindingsAccessor, viewModel) {
-    var allBindings = allBindingsAccessor();
-
-    var options = {default: 'Select one...'};
-    $.extend(options, allBindings.chosen);
-
-      $(element).attr('data-placeholder', options.default).addClass('chzn-select');
-  },
-  update: function(element, valueAccessor, allBindingsAccessor, viewModel) {
-    $('.chzn-select').chosen();
-  }
-};
-
 ko.applyBindings(new ViewModel());
 
