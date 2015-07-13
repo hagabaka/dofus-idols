@@ -1,5 +1,5 @@
-define(['knockout', 'idols', 'algorithms'], function(ko, idols, algorithms) {
-  return function ViewModel() {
+define(['knockout', 'idols', 'algorithms', 'domReady!'], function(ko, idols, algorithms) {
+  function ViewModel() {
     var self = this;
     this.visibleIdols = ko.observableArray(idols.allIdols);
     this.combinationEntry = ko.observable('');
@@ -25,6 +25,12 @@ define(['knockout', 'idols', 'algorithms'], function(ko, idols, algorithms) {
         return synergy.guessed;
       });
     });
+  }
+  var viewModel = new ViewModel();
+
+  viewModel.activateKO = function() {
+    ko.applyBindings(viewModel);
   };
+  return viewModel;
 });
 

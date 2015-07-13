@@ -7,10 +7,8 @@ requirejs.config({
   }
 });
 
-requirejs(['knockout', 'viewModel', 'jquery', 'selectize', 'idols', 'selectizePlugins', 'domReady!'],
-  function(ko, ViewModel, $, Selectize, idols) {
-  ko.applyBindings(new ViewModel());
-
+requirejs(['viewModel', 'jquery', 'selectize', 'idols', 'selectizePlugins', 'domReady!'],
+  function(viewModel, $, Selectize, idols) {
   var $combinationEntry = $('#combination-entry');
   $combinationEntry.selectize({
     maxItems: 6,
@@ -28,5 +26,6 @@ requirejs(['knockout', 'viewModel', 'jquery', 'selectize', 'idols', 'selectizePl
     plugins: ['only_close_when_full', 'remove_button'],
     selectOnTab: true,
   });
+  viewModel.activateKO();
 });
 
