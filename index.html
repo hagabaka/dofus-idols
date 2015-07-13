@@ -2,16 +2,10 @@
 <html>
   <head>
     <title>Dofus Idol Calculator</title>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js'></script>
-    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.1/js/standalone/selectize.min.js'></script>
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.1/css/selectize.min.css' rel='stylesheet' />
-    <script src='utilities.js'></script>
-    <script src='idols.js'></script>
-    <script src='synergies.js'></script>
-    <script src='algorithms.js'></script>
+    <script src='require.js' data-main='main.js'></script>
 
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.1/css/selectize.min.css' rel='stylesheet' />
     <link href='style.css' rel='stylesheet' />
   </head>
 
@@ -26,6 +20,12 @@
 
       <input id='combination-display' readonly data-bind='value: combinationEntry'
              onclick="this.select()">
+      <h2>Effects</h2>
+      <ul id='effects' data-bind='foreach: combinationIdols'>
+        <li data-bind='text: effect'></li>
+      </ul>
+
+      <h2>Synergies</h2>
       <ul id='synergies' data-bind='foreach: synergies()'>
         <li class='synergy' data-bind='css: {negative: negative}'>
           <ul class='idol-names' data-bind='foreach: idols'>
@@ -46,7 +46,5 @@
         <a href='http://impsvillage.com/forums/topic/147332-work-in-progress-idol-score-calculator/'>ImpsVillage</a>.
       </p>
     </div>
-    <script src='viewModel.js'></script>
-    <script src='setupSelectize.js'></script>
   </body>
 </html>
