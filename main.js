@@ -7,27 +7,9 @@ requirejs.config({
   }
 });
 
-requirejs(['knockout', 'viewModel', 'jquery', 'selectize', 'idols', 'domReady!'],
+requirejs(['knockout', 'viewModel', 'jquery', 'selectize', 'idols', 'selectizePlugins', 'domReady!'],
   function(ko, ViewModel, $, Selectize, idols) {
   ko.applyBindings(new ViewModel());
-  Selectize.define('only_close_when_full', function() {
-    var self = this;
-
-    this.on('initialize', function() {
-      self.open();
-    });
-
-    this.close = (function() {
-      var originalClose = self.close;
-      return function() {
-        if(self.isFull()) {
-          return originalClose.apply(this, arguments);
-        } else {
-          return self;
-        }
-      };
-    })();
-  });
 
   var $combinationEntry = $('#combination-entry');
   $combinationEntry.selectize({
