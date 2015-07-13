@@ -20,7 +20,9 @@ html, body {
 }
 .selectize-dropdown [data-selectable] {
   display: inline-block;
-  min-width: 15%;
+}
+.selectize-dropdown [data-selectable], .selectize-input .item {
+  width: 12%;
 }
 
 @media (max-width: 600px) {
