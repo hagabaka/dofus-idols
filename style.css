@@ -3,14 +3,20 @@ html, body {
   padding: 0;
   margin: 0;
 }
+.selectize-input, .selectize-dropdown, .selectize-input input {
+  font-size: medium;
+}
+#display, #notes {
+  font-size: 90%;
+}
 
 #entry {
-  width: 50%;
+  width: 60%;
   float: left;
   padding: 0.5em;
 }
 #display {
-  padding: 0.55em 0.5em 0.5em 53%;
+  padding: 0.55em 0.5em 0.5em 62%;
 }
 .selectize-dropdown [data-selectable] {
   display: inline-block;
@@ -72,8 +78,9 @@ html, body {
 
 #score {
   font-size: xx-large;
+  font-weight: bold;
 }
-#synergies, #synergies ul, #effects {
+#synergies ul {
   list-style: none;
   padding-left: 0;
 }
