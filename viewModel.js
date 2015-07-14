@@ -5,7 +5,12 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'sifter', 'dom
     this.sifter = ko.observable(new Sifter(idols));
     this.searchTerm = ko.observable('');
     this.visibleIdols = ko.computed(function() {
-      return self.sifter().search(self.searchTerm(), {fields: ['name']}).items
+      return self.sifter().search(self.searchTerm(), {fields: ['name'], sort: [
+      {field: 'score', direction: 'desc'},
+      {field: 'name'},
+      {field: 'group'},
+      {field: 'ineligible'}
+    ]}).items
         .map(function(item) { return idols[item.id]; });
     });
     this.highlightedIdol = ko.observable();
