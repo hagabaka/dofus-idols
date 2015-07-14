@@ -40,19 +40,20 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'sifter', 'dom
       });
     });
     this.examinedIdol = ko.observable();
+    this.examinedIdol.extend({rateLimit: 3000, method: 'notifyWhenChangesStop'});
     function readyForEntry() {
       $('#combination-entry').focus();
     }
     idols.forEach(function(idol) {
       idol.synergyWithExaminedIdol = ko.computed(function() {
         var examinedIdol = self.examinedIdol();
-        return examinedIdol && synergies.between(idol, self.examinedIdol());
+        return examinedIdol && synergies.between(idol, examinedIdol);
       });
       idol.positiveSynergy = ko.computed(function() {
-        return idol.synergyWithExaminedIdol && idol.synergyWithExaminedIdol.positive || false;
+        return idol.synergyWithExaminedIdol() && !idol.synergyWithExaminedIdol().negative || false;
       });
       idol.negativeSynergy = ko.computed(function() {
-        return idol.synergyWithExaminedIdol && idol.synergyWithExaminedIdol.negative || false;
+        return idol.synergyWithExaminedIdol() && idol.synergyWithExaminedIdol().negative || false;
       });
       idol.inUse = ko.observable(false);
       idol.putInCombination = function() {
@@ -73,6 +74,15 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'sifter', 'dom
         }
         readyForEntry();
       };
+      idol.examine = function() {
+        self.examinedIdol(idol);
+      };
+      idol.examined = ko.computed(function() {
+        if(self.examinedIdol() === idol) {
+          console.log(idol);
+        }
+        return idol === self.examinedIdol();
+      });
       idol.highlighted = ko.computed(function() {
         return idol === self.highlightedIdol();
       });

@@ -12,7 +12,7 @@
     <div id='entry' data-bind='css: {full: combinationIsFull}'>
       <ul id='combination-idols' data-bind='foreach: combinationIdols'>
         <li data-bind='component: {name: "idol", params: $data},
-          event: {click: removeFromCombination}'></li>
+          event: {click: removeFromCombination}, css: {examined: examined}'></li>
       </ul>
       <input id='combination-entry' type='text' placeholder='Idol name' autofocus
              data-bind='textInput: searchTerm,
@@ -20,7 +20,7 @@
       <ul id='idol-menu' data-bind='foreach: visibleIdols, '>
         <li data-bind='component: {name: "idol", params: $data},
           event: {click: putInCombination},
-          css: {"in-use": inUse, highlighted: highlighted}'></li>
+          css: {"in-use": inUse, highlighted: highlighted, examined: examined}'></li>
       </ul>
     </div>
 

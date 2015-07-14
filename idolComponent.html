@@ -1,7 +1,11 @@
 <div class='idol'
-  data-bind='css: {positiveSynergy: positiveSynergy, negativeSynergy: negativeSynergy}'>
+  data-bind='event: {mouseover: examine}'>
   <span class='name' data-bind='text: name'></span>
   <span class='score' data-bind='text: score'></span>
+  <!-- ko if: synergyWithExaminedIdol -->
+  <span class='synergy-value' data-bind='text: synergyWithExaminedIdol().value,
+    css: {positive: positiveSynergy, negative: negativeSynergy},'></span>
+  <!-- /ko -->
   <!-- <img  data-bind='attr: {src: imageUrl}' /> -->
   <dl class='details'>
     <dt>Level</dt>
