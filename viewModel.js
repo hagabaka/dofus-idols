@@ -10,7 +10,9 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'sifter', 'dom
         {field: 'name'},
         {field: 'group'},
         {field: 'ineligible'}
-      ]}).items.map(function(item) { return idols[item.id]; });
+      ]}).items.map(function(item) { return idols[item.id]; }).sort(function(idol1, idol2) {
+        return (idol1.inUse && idol1.inUse()) - (idol2.inUse && idol2.inUse());
+      });
     });
     this.highlightedIdol = ko.observable();
     this.updateHighlight = function() {
