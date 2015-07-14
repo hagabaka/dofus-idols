@@ -2,7 +2,26 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'sifter', 'dom
   function(ko, $, idols, synergies, algorithms, Sifter) {
   function ViewModel() {
     var self = this;
-    this.visibleIdols = ko.observableArray(idols);
+    this.sifter = ko.observable(new Sifter(idols));
+    this.searchTerm = ko.observable('');
+    this.visibleIdols = ko.computed(function() {
+      return self.sifter().search(self.searchTerm(), {fields: ['name']}).items
+        .map(function(item) { return idols[item.id]; });
+    });
+    this.highlightedIdol = ko.observable();
+    this.updateHighlight = function() {
+      if(self.searchTerm().length && self.visibleIdols().length) {
+        self.highlightedIdol(self.visibleIdols()[0]);
+      } else {
+        self.highlightedIdol(null);
+      }
+    };
+    this.selectHighlighted = function() {
+      if(self.visibleIdols()[0].putInCombination()) {
+        self.searchTerm('');
+        self.updateHighlight();
+      }
+    };
     this.combinationEntry = ko.observable('');
     this.combinationIdols = ko.observableArray([]);
     this.combinationIsFull = ko.computed(function () {
@@ -40,8 +59,11 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'sifter', 'dom
         if(!self.combinationIsFull() && !idol.inUse()) {
           self.combinationIdols.push(idol);
           idol.inUse(true);
+          readyForEntry();
+          return true;
+        } else {
+          return false;
         }
-        readyForEntry();
       };
       idol.removeFromCombination = function() {
         var index = self.combinationIdols().indexOf(idol);
@@ -51,6 +73,9 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'sifter', 'dom
         }
         readyForEntry();
       };
+      idol.highlighted = ko.computed(function() {
+        return idol === self.highlightedIdol();
+      });
     });
   }
   var viewModel = new ViewModel();

@@ -28,7 +28,8 @@ html, body {
   padding: 0.5em 0.2ex;
   vertical-align: top;
 }
-#combination-idols > li:hover, #idol-menu > li:hover, #combination-entry:hover {
+#combination-idols > li:hover, #idol-menu > li:hover, #idol-menu > li.highlighted,
+#combination-entry:hover {
   border: 0.2ex solid black;
 }
 #combination-entry {

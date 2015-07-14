@@ -15,10 +15,12 @@
           event: {click: removeFromCombination}'></li>
       </ul>
       <input id='combination-entry' type='text' placeholder='Idol name' autofocus
-             data-bind='value: combinationEntry'>
+             data-bind='textInput: searchTerm,
+             event: {keyup: updateHighlight, change: selectHighlighted}'>
       <ul id='idol-menu' data-bind='foreach: visibleIdols, '>
         <li data-bind='component: {name: "idol", params: $data},
-          event: {click: putInCombination}, css: {"in-use": inUse}'></li>
+          event: {click: putInCombination},
+          css: {"in-use": inUse, highlighted: highlighted}'></li>
       </ul>
     </div>
 
