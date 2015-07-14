@@ -2,6 +2,17 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'sifter', 'dom
   function(ko, $, idols, synergies, algorithms, Sifter) {
   function ViewModel() {
     var self = this;
+    // Treat search query as an entire token
+    Sifter.prototype.tokenize = function(query) {
+      if(!query || !query.length) {
+        return [];
+      } else {
+        return [{
+          string: query,
+          regex: new RegExp(query, 'i')
+        }];
+      }
+    };
     this.sifter = ko.observable(new Sifter(idols));
     this.searchTerm = ko.observable('');
     this.visibleIdols = ko.computed(function() {
