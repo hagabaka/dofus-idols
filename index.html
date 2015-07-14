@@ -5,14 +5,21 @@
     <script src='require.js' data-main='main.js'></script>
 
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.1/css/selectize.min.css' rel='stylesheet' />
     <link href='style.css' rel='stylesheet' />
   </head>
 
   <body>
-    <div id='entry'>
-      <input id='combination-entry' type='text' placeholder='Enter up to 6 idols'
+    <div id='entry' data-bind='css: {full: combinationIsFull}'>
+      <ul id='combination-idols' data-bind='foreach: combinationIdols'>
+        <li data-bind='component: {name: "idol", params: $data},
+          event: {click: removeFromCombination}'></li>
+      </ul>
+      <input id='combination-entry' type='text' placeholder='Idol name' autofocus
              data-bind='value: combinationEntry'>
+      <ul id='idol-menu' data-bind='foreach: visibleIdols, '>
+        <li data-bind='component: {name: "idol", params: $data},
+          event: {click: putInCombination}, css: {"in-use": inUse}'></li>
+      </ul>
     </div>
 
     <div id='display'>

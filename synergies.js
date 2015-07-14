@@ -688,10 +688,15 @@ define(['idols', 'utilities'], function(idols, utilities) {
       return idol.name;
     }).sort().join('|');
   }
-  synergies = new utilities.HashTable(synergies, hashSynergy).elements();
+  var synergiesTable = new utilities.HashTable(synergies, hashSynergy);
+  synergies = synergiesTable.elements();
   synergies.forEach(function(synergy) {
     synergy.negative = synergy.value < 1;
   });
+
+  synergies.between = function(idol1, idol2) {
+    return synergiesTable.lookup({idols: [idol1, idol2]});
+  };
 
   return synergies;
 });

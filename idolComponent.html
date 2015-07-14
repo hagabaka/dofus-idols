@@ -1,0 +1,27 @@
+<div class='idol'
+  data-bind='css: {positiveSynergy: positiveSynergy, negativeSynergy: negativeSynergy}'>
+  <span class='name' data-bind='text: name'></span>
+  <span class='score' data-bind='text: score'></span>
+  <!-- <img  data-bind='attr: {src: imageUrl}' /> -->
+  <dl class='details'>
+    <dt>Level</dt>
+    <dd class='level' data-bind='text: level'></dd>
+
+    <dt>Description<dt>
+    <dd class='description' data-bind='text: description'></dd>
+
+    <dt>Effect</dt>
+    <dd class='effect' data-bind='text: effect'></dd>
+
+    <dt>Group only</dt>
+    <input class='group-only' type='checkbox' data-bind='checked: group' disabled>
+
+    <dt>Inelible dungeons</dt>
+    <dd>
+      <ul class='ineligible-dungeons' data-bind='foreach: ineligible'>
+        <li class='dungeon' data-bind='text: $data'></li>
+      </ul>
+    </dd>
+  </dl>
+</div>
+

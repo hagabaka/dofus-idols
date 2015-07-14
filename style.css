@@ -3,9 +3,6 @@ html, body {
   padding: 0;
   margin: 0;
 }
-.selectize-input, .selectize-dropdown, .selectize-input input {
-  font-size: medium;
-}
 #display, #notes {
   font-size: 90%;
 }
@@ -18,11 +15,56 @@ html, body {
 #display {
   padding: 0.55em 0.5em 0.5em 62%;
 }
-.selectize-dropdown [data-selectable] {
-  display: inline-block;
+
+#combination-idols {
+  display: inline;
+  padding: 0;
 }
-.selectize-dropdown [data-selectable], .selectize-input .item {
-  width: 12%;
+#combination-idols > li, #idol-menu > li, #combination-entry {
+  border: 0.2ex solid transparent;
+  display: inline-block;
+  width: 15%;
+  height: 3ex;
+  padding: 0.5em 0.2ex;
+  vertical-align: top;
+}
+#combination-idols > li:hover, #idol-menu > li:hover, #combination-entry:hover {
+  border: 0.2ex solid black;
+}
+#combination-entry {
+  font-size: medium;
+  border-bottom-color: black;
+  -webkit-appearance: none;
+}
+#combination-entry:focus {
+  outline: none;
+}
+
+#idol-menu {
+  padding: 0;
+  max-height: 47.5ex;
+  overflow-y: scroll;
+  border-bottom: 0.2ex solid black;
+}
+#idol-menu li:not(.in-use) {
+  cursor: pointer;
+}
+.full #idol-menu {
+  display: none;
+}
+#combination-idols li {
+  cursor: pointer;
+}
+.full #combination-entry {
+  display: none;
+}
+.score {
+  display: block;
+  font-size: small;
+}
+
+.details {
+  display: none;
 }
 
 @media (max-width: 600px) {
@@ -41,41 +83,20 @@ html, body {
     position: absolute;
     bottom: 2em;
   }
-  .selectize-dropdown [data-selectable] {
-    display: inline-block;
-    min-width: 23%;
-  }
-  .selectize-dropdown, .selectize-input {
-    font-size: x-large;
-    line-height: 1em;
-  }
   #notes {
     display: none;
   }
 }
 
-.selectize-dropdown-content {
-  max-height: 500px;
-}
 @media (max-height: 400px) {
-  .selectize-dropdown-content {
-    max-height: 150px;
-  }
   #notes {
     display: none;
   }
 }
 @media (min-height: 401px) and (max-height: 600px) {
-  .selectize-dropdown-content {
-    max-height: 250px;
-  }
   #notes {
     display: none;
   }
-}
-
-#combination-entry {
-  width: 100%;
 }
 
 #score {
@@ -109,6 +130,9 @@ html, body {
 }
 .negative {
   color: red;
+}
+.in-use {
+  color: darkgray;
 }
 
 * {
