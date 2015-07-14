@@ -71,6 +71,9 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'sifter', 'dom
         if(index >= 0) {
           self.combinationIdols.splice(index, 1);
           idol.inUse(false);
+          if(self.examinedIdol() === idol) {
+            self.examinedIdol(null);
+          }
         }
         readyForEntry();
       };
