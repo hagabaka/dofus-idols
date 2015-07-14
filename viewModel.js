@@ -40,7 +40,7 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'sifter', 'dom
       });
     });
     this.examinedIdol = ko.observable();
-    this.examinedIdol.extend({rateLimit: 3000, method: 'notifyWhenChangesStop'});
+    this.examinedIdol.extend({rateLimit: 1000, method: 'notifyWhenChangesStop'});
     function readyForEntry() {
       $('#combination-entry').focus();
     }
