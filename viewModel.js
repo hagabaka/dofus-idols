@@ -26,6 +26,30 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'sifter', 'dom
       });
     });
     this.highlightedIdol = ko.observable();
+    this.handleKey = function(data, event) {
+      if(event.which === 13) { // Enter
+        self.selectHighlighted();
+      } else if(event.which === 9) { // Tab
+        var highlightedIdol = self.highlightedIdol();
+        var visibleIdols = self.visibleIdols();
+        if(highlightedIdol) {
+          var newHighlightedIndex =
+            (visibleIdols.indexOf(highlightedIdol) + 1) % visibleIdols.length;
+          self.highlightedIdol(visibleIdols[newHighlightedIndex]);
+        }
+      } else if(event.which === 8) { // Backspace
+        if(self.searchTerm().length > 0) {
+          return true;
+        } else {
+          if(self.combinationIdols().length > 0) {
+            self.combinationIdols.pop();
+          }
+        }
+      } else {
+        self.updateHighlight();
+        return true;
+      }
+    };
     this.updateHighlight = function() {
       if(self.searchTerm().length && self.visibleIdols().length) {
         self.highlightedIdol(self.visibleIdols()[0]);
@@ -34,7 +58,7 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'sifter', 'dom
       }
     };
     this.selectHighlighted = function() {
-      if(self.visibleIdols()[0].putInCombination()) {
+      if(self.highlightedIdol().putInCombination()) {
         self.searchTerm('');
         self.updateHighlight();
       }
