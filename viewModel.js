@@ -96,11 +96,12 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'sifter', 'dom
       idol.negativeSynergy = ko.computed(function() {
         return idol.synergyWithExaminedIdol() && idol.synergyWithExaminedIdol().negative || false;
       });
-      idol.inUse = ko.observable(false);
+      idol.inUse = ko.computed(function() {
+        return self.combinationIdols.indexOf(idol) >= 0;
+      });
       idol.putInCombination = function() {
         if(!self.combinationIsFull() && !idol.inUse()) {
           self.combinationIdols.push(idol);
-          idol.inUse(true);
           readyForEntry();
           return true;
         } else {
@@ -111,7 +112,6 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'sifter', 'dom
         var index = self.combinationIdols().indexOf(idol);
         if(index >= 0) {
           self.combinationIdols.splice(index, 1);
-          idol.inUse(false);
           if(self.examinedIdol() === idol) {
             self.examinedIdol(null);
           }
