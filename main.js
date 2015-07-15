@@ -3,7 +3,7 @@ requirejs.config({
   paths: {
     jquery: 'https://code.jquery.com/jquery-1.11.3.min',
     knockout: 'https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min',
-    sifter: 'https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.1/js/standalone/selectize'
+    underscore: 'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.0/underscore-min'
   }
 });
 

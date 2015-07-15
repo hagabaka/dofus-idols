@@ -1,28 +1,14 @@
-define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'sifter', 'domReady!'],
-  function(ko, $, idols, synergies, algorithms, Sifter) {
+define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'domReady!'],
+  function(ko, $, idols, synergies, algorithms, _) {
   function ViewModel() {
     var self = this;
-    // Treat search query as an entire token
-    Sifter.prototype.tokenize = function(query) {
-      if(!query || !query.length) {
-        return [];
-      } else {
-        return [{
-          string: query,
-          regex: new RegExp(query, 'i')
-        }];
-      }
-    };
-    this.sifter = ko.observable(new Sifter(idols));
     this.searchTerm = ko.observable('');
+
     this.visibleIdols = ko.computed(function() {
-      return self.sifter().search(self.searchTerm(), {fields: ['name'], sort: [
-        {field: 'score', direction: 'desc'},
-        {field: 'name'},
-        {field: 'group'},
-        {field: 'ineligible'}
-      ]}).items.map(function(item) { return idols[item.id]; }).sort(function(idol1, idol2) {
-        return (idol1.inUse && idol1.inUse()) - (idol2.inUse && idol2.inUse());
+      return idols.filter(function(idol) {
+        return idol.name.toLowerCase().indexOf(self.searchTerm().toLowerCase()) >= 0;
+      }).sort(function(idol1, idol2) {
+        return idol2.score - idol1.score;
       });
     });
     this.highlightedIdol = ko.observable();
