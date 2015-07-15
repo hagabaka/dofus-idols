@@ -28,9 +28,11 @@ html, body {
   padding: 0.5em 0.2ex;
   vertical-align: top;
 }
-#combination-idols > li:hover, #idol-menu > li:hover, #idol-menu > li.highlighted,
-#combination-entry:hover {
-  border: 0.2ex solid black;
+#combination-idols > li:hover, #idol-menu > li:hover, #combination-entry:hover {
+  border-color: lightblue;
+}
+#idol-menu > li.highlighted {
+  border-color: black;
 }
 #combination-idols > li.examined, #idol-menu > li.examined {
   border-color: green green red red;
