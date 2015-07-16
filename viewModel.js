@@ -20,10 +20,20 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'thenBy', 'dom
     this.highlightedIdol = ko.observable();
 
     idols.forEach(function(idol) {
+      idol.inUse = ko.computed(function() {
+        return viewModel.combinationIdols().indexOf(idol) >= 0;
+      });
       idol.scoreDelta = ko.computed(function() {
         var currentCombination = viewModel.combinationIdols();
         var currentScore = algorithms.totalScore(currentCombination);
-        return algorithms.totalScore(currentCombination.concat([idol])) - currentScore;
+        if(idol.inUse()) {
+          var minusIdol = currentCombination.filter(function(used) {
+            return used !== idol;
+          });
+          return algorithms.totalScore(minusIdol) - currentScore;
+        } else {
+          return algorithms.totalScore(currentCombination.concat([idol])) - currentScore;
+        }
       });
       idol.synergyWithExaminedIdol = ko.computed(function() {
         var examinedIdol = viewModel.examinedIdol();
@@ -34,9 +44,6 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'thenBy', 'dom
       });
       idol.negativeSynergy = ko.computed(function() {
         return idol.synergyWithExaminedIdol() && idol.synergyWithExaminedIdol().negative || false;
-      });
-      idol.inUse = ko.computed(function() {
-        return viewModel.combinationIdols().indexOf(idol) >= 0;
       });
       idol.putInCombination = function() {
         if(!viewModel.combinationIsFull() && !idol.inUse()) {

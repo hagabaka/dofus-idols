@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 html, body {
   height: 100%;
   padding: 0;
@@ -8,12 +11,12 @@ html, body {
 }
 
 #entry {
-  width: 60%;
+  width: 70%;
   float: left;
   padding: 0.5em;
 }
 #display {
-  padding: 0.55em 0.5em 0.5em 62%;
+  padding: 0.55em 0.5em 0.5em 72%;
 }
 
 #combination-idols {
@@ -23,9 +26,9 @@ html, body {
 #combination-idols > li, #idol-menu > li, #combination-entry {
   border: 0.2ex solid transparent;
   display: inline-block;
-  width: 15%;
-  height: 3ex;
-  padding: 0.5em 0.2ex;
+  width: 16%;
+  height: 6ex;
+  padding: 0.5ex 0.2em;
   vertical-align: top;
 }
 #combination-idols > li:hover, #idol-menu > li:hover, #combination-entry:hover {
@@ -48,7 +51,7 @@ html, body {
 
 #idol-menu {
   padding: 0;
-  max-height: 47.5ex;
+  max-height: 48ex;
   overflow-y: scroll;
   border-bottom: 0.2ex solid black;
 }
@@ -71,7 +74,7 @@ html, body {
   display: inline-block;
   font-size: small;
 }
-.score-delta::before {
+#idol-menu .score-delta::before {
   content: '+';
 }
 
@@ -151,6 +154,6 @@ html, body {
 }
 
 * {
-  font-family: serif;
+  font-family: sans-serif;
 }
 
