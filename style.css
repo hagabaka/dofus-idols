@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab|Roboto);
+
 * {
   box-sizing: border-box;
 }
@@ -31,6 +33,7 @@ html, body {
   padding: 0.5ex 0.2em;
   vertical-align: top;
 }
+
 #combination-idols > li:hover, #idol-menu > li:hover, #combination-entry:hover {
   border-color: lightblue;
 }
@@ -154,11 +157,10 @@ html, body {
   color: darkgray;
 }
 
-@import url('http://fonts.googleapis.com/css?family=Rhodium+Libre|Cambay');
 .synergy-value, .score-delta, #effects, #synergies, #notes {
-  font-family: Cambay, sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 .name, .score, #score, input, h2 {
-  font-family: 'Rhodium Libre', serif;
+  font-family: 'Roboto Slab', serif;
 }
 
