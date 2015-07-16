@@ -67,9 +67,12 @@ html, body {
 .name {
   display: block;
 }
-.score, .synergy-value {
+.score, .synergy-value, .score-delta {
   display: inline-block;
   font-size: small;
+}
+.score-delta::before {
+  content: '+';
 }
 
 .details {

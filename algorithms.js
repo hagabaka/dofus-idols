@@ -42,6 +42,33 @@ define(['synergies', 'utilities'], function(synergies, utilities) {
   }
   exports.findIdolCombinations = findIdolCombinations;
 
+  function randomCombination(candidates) {
+    return utilities.shuffle(candidates).slice(0, 6);
+  }
+  exports.randomCombination = randomCombination;
+
+  function guessBestCombination(candidates, startCombination) {
+    if(!startCombination) {
+      startCombination = randomCombination(candidates);
+    }
+    var bestCombination = startCombination;
+
+    candidates.filter(function(idol) {
+      return !utilities.isMember(idol, startCombination);
+    }).forEach(function(idol) {
+      startCombination.forEach(function(_, index) {
+        var replacementCombination = startCombination.slice();
+        replacementCombination[index] = idol;
+        if(totalScore(replacementCombination) > totalScore(bestCombination)) {
+          bestCombination = replacementCombination;
+        }
+      });
+    });
+
+    return bestCombination;
+  }
+  exports.guessBestCombination = guessBestCombination;
+
   function printCombination(combination) {
     var idols = combination.map(function(idol) {
       return idol.name;

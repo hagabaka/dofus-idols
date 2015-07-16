@@ -1,10 +1,13 @@
 <div class='idol'>
   <span class='name' data-bind='text: name'></span>
-  <span class='score' data-bind='text: score'></span>
+  <span class='score' title="Score" data-bind='text: score'></span>
   <!-- ko if: synergyWithExaminedIdol -->
-  <span class='synergy-value' data-bind='text: synergyWithExaminedIdol().value,
+  <span class='synergy-value' title="Synergy with selected idol"
+    data-bind='text: synergyWithExaminedIdol().value,
     css: {positive: positiveSynergy, negative: negativeSynergy},'></span>
   <!-- /ko -->
+  <span class='score-delta' title="Score increase by adding this idol to current combination"
+    data-bind='text: scoreDelta'></span>
   <!-- <img  data-bind='attr: {src: imageUrl}' /> -->
   <dl class='details'>
     <dt>Level</dt>
