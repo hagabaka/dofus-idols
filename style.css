@@ -73,6 +73,7 @@ html, body {
 .score, .synergy-value, .score-delta {
   display: inline-block;
   font-size: small;
+  cursor: help;
 }
 #idol-menu .score-delta::before {
   content: '+';
@@ -143,17 +144,20 @@ html, body {
   width: 100%;
   border: none;
 }
-.positive {
+.synergy-value {
   color: green;
 }
-.negative {
+.synergy-value.negative {
   color: red;
 }
 .in-use {
   color: darkgray;
 }
 
-* {
+.synergy-value, .score-delta, #effects, #synergies, #notes {
   font-family: sans-serif;
+}
+.name, .score, #score, input, h2 {
+  font-family: serif;
 }
 
