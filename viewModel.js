@@ -113,7 +113,7 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'thenBy', 'dom
       }
     };
     this.selectHighlighted = function() {
-      if(viewModel.highlightedIdol().putInCombination()) {
+      if(viewModel.highlightedIdol() && viewModel.highlightedIdol().putInCombination()) {
         viewModel.searchTerm('');
         viewModel.updateHighlight();
       }
