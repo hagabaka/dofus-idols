@@ -12,7 +12,7 @@
     <div id='entry' data-bind='css: {full: combinationIsFull}'>
       <ul id='combination-idols' data-bind='foreach: combinationIdols'>
         <li data-bind='component: {name: "idol", params: $data},
-          event: {click: removeFromCombination, mouseover: examine},
+          event: {click: removeFromCombination},
           css: {examined: examined}'></li>
       </ul>
       <input id='combination-entry' type='text' placeholder='Idol name' autofocus
