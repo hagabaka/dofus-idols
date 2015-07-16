@@ -154,10 +154,11 @@ html, body {
   color: darkgray;
 }
 
+@import url('http://fonts.googleapis.com/css?family=Rhodium+Libre|Cambay');
 .synergy-value, .score-delta, #effects, #synergies, #notes {
-  font-family: sans-serif;
+  font-family: Cambay, sans-serif;
 }
 .name, .score, #score, input, h2 {
-  font-family: serif;
+  font-family: 'Rhodium Libre', serif;
 }
 
