@@ -5,6 +5,9 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'thenBy', 'dom
 
     this.combinationEntry = ko.observable('');
     this.combinationIdols = ko.observableArray([]);
+    this.combinationEntryWidth = ko.computed(function() {
+      return (96 - viewModel.combinationIdols().length * 16).toString() + '%';
+    });
     this.combinationIsFull = ko.computed(function () {
       return viewModel.combinationIdols().length >= 6;
     });

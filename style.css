@@ -28,10 +28,15 @@ html, body {
 #combination-idols > li, #idol-menu > li, #combination-entry {
   border: 0.2ex solid transparent;
   display: inline-block;
-  width: 16%;
   height: 6ex;
   padding: 0.5ex 0.2em;
   vertical-align: top;
+}
+#combination-idols > li, #idol-menu > li {
+  width: 16%;
+}
+#combination-entry {
+  width: 96%;
 }
 
 #combination-idols > li:hover, #idol-menu > li:hover, #combination-entry:hover {

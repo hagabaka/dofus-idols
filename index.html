@@ -17,7 +17,7 @@
       </ul>
       <input id='combination-entry' type='text' placeholder='Idol name' autofocus
              data-bind='textInput: searchTerm,
-             event: {keydown: handleKey}'>
+             event: {keydown: handleKey}, style: {width: combinationEntryWidth}'>
       <ul id='idol-menu' data-bind='foreach: visibleIdols, '>
         <li data-bind='component: {name: "idol", params: $data},
           event: {click: putInCombination},
