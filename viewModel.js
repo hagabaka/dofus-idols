@@ -76,10 +76,10 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'thenBy', 'dom
       return idols.filter(function(idol) {
         return idol.name.toLowerCase().indexOf(viewModel.searchTerm().toLowerCase()) >= 0;
       }).sort(firstBy(function(idol1, idol2) {
-        return idol1.scoreDelta() - idol2.scoreDelta();
-      }, -1).thenBy('score', -1).thenBy(function(idol1, idol2) {
         return idol1.inUse() - idol2.inUse();
-      }));
+      }).thenBy(function(idol1, idol2) {
+        return idol1.scoreDelta() - idol2.scoreDelta();
+      }, -1).thenBy('score', -1));
     });
     this.handleKey = function(data, event) {
       if(event.which === 13) { // Enter
