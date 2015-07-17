@@ -144,9 +144,10 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'thenBy', 'dom
     this.bestCombination = ko.observable([]);
     this.bestScore = ko.observable();
     this.searching = ko.observable(false);
+    this.milisecondsElapsed = ko.observable(0);
     this.estimatedMilisecondsRemaining = ko.observable(0);
-    this.estimatedTimeRemaining = ko.computed(function() {
-      var date = new Date(viewModel.estimatedMilisecondsRemaining());
+    function formatTime(miliseconds) {
+      var date = new Date(miliseconds);
       var hh = date.getUTCHours();
       var mm = date.getUTCMinutes();
       var ss = date.getSeconds();
@@ -156,9 +157,15 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'thenBy', 'dom
       if (ss < 10) {ss = "0"+ss;}
       // This formats your string to HH:MM:SS
       return hh+":"+mm+":"+ss;
+    }
+    this.estimatedTimeRemaining = ko.computed(function() {
+      return formatTime(viewModel.estimatedMilisecondsRemaining());
+    });
+    this.timeElapsed = ko.computed(function() {
+      return formatTime(viewModel.milisecondsElapsed());
     });
     ['progressValue', 'progressMax', 'bestCombination', 'bestScore',
-    'estimatedMilisecondsRemaining'].forEach(function(name) {
+      'milisecondsElapsed', 'estimatedMilisecondsRemaining'].forEach(function(name) {
       viewModel[name].extend({rateLimit: 500});
     });
     this.showSearchWindow = ko.observable(false);
@@ -167,7 +174,7 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'thenBy', 'dom
       worker = new Worker('worker.js');
       worker.onmessage = function(e) {
         ['progressValue', 'progressMax', 'bestScore', 'searching',
-         'estimatedMilisecondsRemaining'].forEach(function(variable) {
+         'milisecondsElapsed', 'estimatedMilisecondsRemaining'].forEach(function(variable) {
           if(variable in e.data) {
             viewModel[variable](e.data[variable]);
           }

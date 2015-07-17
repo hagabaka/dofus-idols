@@ -24,6 +24,7 @@ onmessage = function(e) {
                 return idol.name;
               }),
               bestScore: bestScore,
+              milisecondsElapsed: timeElapsed,
               estimatedMilisecondsRemaining: timeRemaining
             });
           });
