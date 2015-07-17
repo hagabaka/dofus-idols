@@ -12,6 +12,9 @@ function(ko, viewModel) {
   ko.components.register('idol', {
     template: {require: 'text!./idolComponent.html'}
   });
+  ko.components.register('searchWindow', {
+    template: {require: 'text!./searchWindow.html'}
+  });
 
   viewModel.activateKO();
 });

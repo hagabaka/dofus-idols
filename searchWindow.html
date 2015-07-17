@@ -1,0 +1,25 @@
+<!-- ko with: $root -->
+<p data-bind='if: searching'>
+Searching for the best idol combination. This can take a while...</p>
+<p data-bind='ifnot: searching'>Searching stopped</p>
+<dl>
+  <dt>Best combination found so far</dt>
+  <dd>
+    <ul data-bind='foreach: bestCombination'>
+      <li data-bind='text: name'></li>
+    </ul>
+  </dd>
+  <dt>Score</dt>
+  <dd data-bind='text: bestScore'></dd>
+  <dt>Search progress</dt>
+  <dd>
+    <progress data-bind='attr: {max: progressMax, value: progressValue}'>
+    </progress>
+    <span data-bind='text: progressPercentage'></span>
+  </dd>
+  <dt>Estimated time remaining</dt>
+  <dd data-bind='text: estimatedTimeRemaining'></dd>
+</dl>
+<button data-bind='click: stopSearching, enable: searching'>Stop</button>
+<button data-bind='click: showSearchWindow(false)'>Close</button>
+<!-- /ko -->

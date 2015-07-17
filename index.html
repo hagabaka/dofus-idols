@@ -9,6 +9,13 @@
   </head>
 
   <body>
+    <button data-bind='click: findBestCombination, disable: showSearchWindow,
+      text: searching() ? "Searching for the best combination..." :
+      "Find the best combination"'>
+      Find the best combination</button>
+    <div id='search-window' data-bind='component: "searchWindow", visible: showSearchWindow'>
+    </div>
+
     <div id='entry' data-bind='css: {full: combinationIsFull}'>
       <ul id='combination-idols' data-bind='foreach: combinationIdols'>
         <li data-bind='component: {name: "idol", params: $data},

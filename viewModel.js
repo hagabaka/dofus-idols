@@ -136,6 +136,67 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'thenBy', 'dom
     function readyForEntry() {
       $('#combination-entry').focus();
     }
+    this.progressValue = ko.observable();
+    this.progressMax = ko.observable();
+    this.progressPercentage = ko.computed(function() {
+      return (viewModel.progressValue() * 100 / viewModel.progressMax()).toFixed(2) + '%'
+    });
+    this.bestCombination = ko.observable([]);
+    this.bestScore = ko.observable();
+    this.searching = ko.observable(false);
+    this.estimatedMilisecondsRemaining = ko.observable(0);
+    this.estimatedTimeRemaining = ko.computed(function() {
+      var date = new Date(viewModel.estimatedMilisecondsRemaining());
+      var hh = date.getUTCHours();
+      var mm = date.getUTCMinutes();
+      var ss = date.getSeconds();
+      // These lines ensure you have two-digits
+      if (hh < 10) {hh = "0"+hh;}
+      if (mm < 10) {mm = "0"+mm;}
+      if (ss < 10) {ss = "0"+ss;}
+      // This formats your string to HH:MM:SS
+      return hh+":"+mm+":"+ss;
+    });
+    ['progressValue', 'progressMax', 'bestCombination', 'bestScore',
+    'estimatedMilisecondsRemaining'].forEach(function(name) {
+      viewModel[name].extend({rateLimit: 500});
+    });
+    this.showSearchWindow = ko.observable(false);
+    var worker;
+    function setupWorker() {
+      worker = new Worker('worker.js');
+      worker.onmessage = function(e) {
+        ['progressValue', 'progressMax', 'bestScore', 'searching',
+         'estimatedMilisecondsRemaining'].forEach(function(variable) {
+          if(variable in e.data) {
+            viewModel[variable](e.data[variable]);
+          }
+        });
+        if('bestCombination' in e.data) {
+          viewModel.bestCombination(e.data.bestCombination.map(function(name) {
+            return idols.idolNamed[name];
+          }));
+        }
+      };
+    }
+    this.findBestCombination = function() {
+      viewModel.showSearchWindow(true);
+      if(!viewModel.searching()) {
+        setupWorker();
+        worker.postMessage({method: 'findBestCombination',
+          idolNames: viewModel.visibleIdols().map(function(idol) {
+            return idol.name;
+          }),
+        });
+      }
+      viewModel.searching(true);
+    };
+    this.stopSearching = function() {
+      if(worker) {
+        worker.terminate();
+      }
+      viewModel.searching(false);
+    };
   }
   var viewModel = new ViewModel();
 

@@ -73,5 +73,37 @@ define([], function() {
   }
   exports.shuffle = shuffle;
 
+  // based on https://en.wikipedia.org/wiki/Binomial_coefficient#Binomial_coefficient_in_programming_languages
+  function combinationCount(n, k) {
+    if(k < 0 || k > n) {
+      return 0;
+    }
+    if(k == 0 || k == n) {
+      return 1;
+    }
+    k = Math.min(k, n - k); // take advantage of symmetry
+    var c = 1;
+    for(var i = 0; i < k; i++) {
+      c = c * (n - i) / (i + 1);
+    }
+    return c;
+  }
+  exports.combinationCount = combinationCount;
+
+  // based on http://rosettacode.org/wiki/Combinations#JavaScript
+  function eachCombination(array, k, yieldCombination) {
+    array.forEach(function(element, index) {
+      if(k === 1) {
+        yieldCombination([element]);
+      } else {
+        eachCombination(array.slice(index + 1, array.length), k - 1,
+        function(subCombination) {
+          yieldCombination([element].concat(subCombination));
+        });
+      }
+    });
+  }
+  exports.eachCombination = eachCombination;
+
   return exports;
 });

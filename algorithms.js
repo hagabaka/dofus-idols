@@ -1,5 +1,5 @@
-define(['synergies', 'utilities', 'combinatorics'],
-  function(synergies, utilities, Combinatorics) {
+define(['synergies', 'utilities'],
+  function(synergies, utilities) {
   var exports = {};
 
   function totalScore(idols, usedSynergy) {
@@ -7,6 +7,20 @@ define(['synergies', 'utilities', 'combinatorics'],
     idols.forEach(function(idol) {
       scores[idol.name] = idol.score;
     });
+    if(idols.length === 0) {
+      return 0;
+    } else if(idols.length === 1) {
+      return idols[0].score;
+    }
+    utilities.eachCombination(idols, 2, function(pair) {
+      var synergy = synergies.between(pair[0], pair[1]);
+      if(synergy) {
+        pair.forEach(function(idol) {
+          scores[idol.name] *= synergy.value;
+        });
+      }
+    });
+    /*
     synergies.forEach(function(synergy) {
       if(utilities.isSubset(synergy.idols, idols)) {
         if(usedSynergy) {
@@ -16,7 +30,7 @@ define(['synergies', 'utilities', 'combinatorics'],
           scores[idol.name] *= synergy.value;
         });
       }
-    });
+    });*/
     return idols.reduce(function(sum, idol) {
       return sum + Math.floor(scores[idol.name]);
     }, 0);
@@ -72,17 +86,17 @@ define(['synergies', 'utilities', 'combinatorics'],
 
   var stop = 'stop';
   function findBestCombination(candidates, progress) {
-    var allCombinations = Combinatorics.combination(candidates, 6);
     var count = 0;
     var bestCombination = [];
     var bestScore = 0;
-    allCombinations.forEach(function(combination) {
+    var total = utilities.combinationCount(candidates.length, 6);
+    utilities.eachCombination(candidates, 6, function(combination) {
       var score = totalScore(combination);
       if(score > bestScore) {
         bestCombination = combination;
         bestScore = score;
       }
-      if(progress(count, allCombinations.length, bestCombination, bestScore) === stop) {
+      if(progress(count, total, bestCombination, bestScore) === stop) {
         return bestCombination;
       }
       count++;
