@@ -18,19 +18,11 @@ define(['synergies', 'utilities'],
         pair.forEach(function(idol) {
           scores[idol.name] *= synergy.value;
         });
-      }
-    });
-    /*
-    synergies.forEach(function(synergy) {
-      if(utilities.isSubset(synergy.idols, idols)) {
         if(usedSynergy) {
           usedSynergy(synergy);
         }
-        synergy.idols.forEach(function(idol) {
-          scores[idol.name] *= synergy.value;
-        });
       }
-    });*/
+    });
     return idols.reduce(function(sum, idol) {
       return sum + Math.floor(scores[idol.name]);
     }, 0);
