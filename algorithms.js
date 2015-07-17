@@ -1,4 +1,5 @@
-define(['synergies', 'utilities'], function(synergies, utilities) {
+define(['synergies', 'utilities', 'combinatorics'],
+  function(synergies, utilities, Combinatorics) {
   var exports = {};
 
   function totalScore(idols, usedSynergy) {
@@ -68,6 +69,28 @@ define(['synergies', 'utilities'], function(synergies, utilities) {
     return bestCombination;
   }
   exports.guessBestCombination = guessBestCombination;
+
+  var stop = 'stop';
+  function findBestCombination(candidates, progress) {
+    var allCombinations = Combinatorics.combination(candidates, 6);
+    var count = 0;
+    var bestCombination = [];
+    var bestScore = 0;
+    allCombinations.forEach(function(combination) {
+      var score = totalScore(combination);
+      if(score > bestScore) {
+        bestCombination = combination;
+        bestScore = score;
+      }
+      if(progress(count, allCombinations.length, bestCombination, bestScore) === stop) {
+        return bestCombination;
+      }
+      count++;
+    });
+    return bestCombination;
+  }
+  findBestCombination.stop = stop;
+  exports.findBestCombination = findBestCombination;
 
   function printCombination(combination) {
     var idols = combination.map(function(idol) {
