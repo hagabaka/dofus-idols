@@ -155,7 +155,7 @@ html, body {
 .synergy-value {
   color: green;
 }
-.synergy-value.negative {
+.negative .synergy-value {
   color: red;
 }
 .in-use {
