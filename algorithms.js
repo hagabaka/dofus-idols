@@ -88,10 +88,10 @@ define(['synergies', 'utilities'],
         bestCombination = combination;
         bestScore = score;
       }
+      count++;
       if(progress(count, total, bestCombination, bestScore) === stop) {
         return bestCombination;
       }
-      count++;
     });
     return bestCombination;
   }
