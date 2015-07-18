@@ -146,17 +146,23 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'thenBy', 'dom
     this.searching = ko.observable(false);
     this.milisecondsElapsed = ko.observable(0);
     this.estimatedMilisecondsRemaining = ko.observable(0);
+
+    function padToTwoDigits(number) {
+      var string = number.toFixed();
+      if(number < 10) {
+        return '0' + string;
+      } else {
+        return string;
+      }
+    }
     function formatTime(miliseconds) {
-      var date = new Date(miliseconds);
-      var hh = date.getUTCHours();
-      var mm = date.getUTCMinutes();
-      var ss = date.getSeconds();
-      // These lines ensure you have two-digits
-      if (hh < 10) {hh = "0"+hh;}
-      if (mm < 10) {mm = "0"+mm;}
-      if (ss < 10) {ss = "0"+ss;}
-      // This formats your string to HH:MM:SS
-      return hh+":"+mm+":"+ss;
+      var seconds = miliseconds / 1000;
+      var ss = seconds % 60;
+      var minutes = (seconds - ss) / 60;
+      var mm = minutes % 60;
+      var hours = (minutes - mm) / 60;
+
+      return padToTwoDigits(hours) + ':' + padToTwoDigits(mm) + ':' + padToTwoDigits(ss);
     }
     this.estimatedTimeRemaining = ko.computed(function() {
       return formatTime(viewModel.estimatedMilisecondsRemaining());
