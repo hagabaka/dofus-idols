@@ -6,6 +6,7 @@ onmessage = function(e) {
     var methods = {
       findBestCombination: function(data) {
         var startingTime = Date.now();
+        var timeOfLastMessage = 0;
         var candidates = data.idolNames.map(function(name) {
           return idols.idolNamed[name];
         });
@@ -17,16 +18,19 @@ onmessage = function(e) {
             var workRemaining = 1 - workDone;
             var speed = workDone / timeElapsed;
             var timeRemaining = timeElapsed * workRemaining / workDone;
-            postMessage({
-              progressValue: index,
-              progressMax: total,
-              bestCombination: bestCombination.map(function(idol) {
-                return idol.name;
-              }),
-              bestScore: bestScore,
-              milisecondsElapsed: timeElapsed,
-              estimatedMilisecondsRemaining: timeRemaining
-            });
+            if(index === 1 || index === total || timeElapsed - timeOfLastMessage >= 500) {
+              postMessage({
+                progressValue: index,
+                progressMax: total,
+                bestCombination: bestCombination.map(function(idol) {
+                  return idol.name;
+                }),
+                bestScore: bestScore,
+                milisecondsElapsed: timeElapsed,
+                estimatedMilisecondsRemaining: timeRemaining
+              });
+              timeOfLastMessage = timeElapsed;
+            }
           });
         postMessage({searching: false});
       }
