@@ -12,10 +12,10 @@ requirejs.config({
 requirejs(['knockout', 'viewModel'],
 function(ko, viewModel) {
   ko.components.register('idol', {
-    template: {require: 'text!./idolComponent.html'}
+    template: {require: 'text!./view/idolComponent.html'}
   });
   ko.components.register('searchWindow', {
-    template: {require: 'text!./searchWindow.html'}
+    template: {require: 'text!./view/searchWindow.html'}
   });
 
   require(['domReady!'], function() {
