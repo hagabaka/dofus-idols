@@ -1,6 +1,5 @@
-define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'thenBy',
-  'viewModel/idolComponent'],
-  function(ko, $, idols, synergies, algorithms, firstBy, extendIdolViewModel) {
+define(['knockout', 'jquery', 'model', 'thenBy', 'viewModel/idolComponent'],
+  function(ko, $, model, firstBy, extendIdolViewModel) {
   function ViewModel() {
     var viewModel = this;
 
@@ -15,7 +14,7 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'thenBy',
     this.synergies = ko.observableArray([]);
     this.score = ko.computed(function() {
       viewModel.synergies([]);
-      return algorithms.totalScore(viewModel.combinationIdols(), function(synergy) {
+      return model.algorithms.totalScore(viewModel.combinationIdols(), function(synergy) {
         viewModel.synergies.push(synergy);
       });
     });
@@ -23,13 +22,13 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'thenBy',
     this.examinedIdol.extend({rateLimit: 1000, method: 'notifyWhenChangesStop'});
     this.highlightedIdol = ko.observable();
 
-    idols.forEach(function(idol) {
-      extendIdolViewModel(idol, viewModel, ko);
+    model.idols.forEach(function(idol) {
+      extendIdolViewModel(idol, model, viewModel, ko);
     });
     this.searchTerm = ko.observable('');
 
     this.visibleIdols = ko.computed(function() {
-      return idols.filter(function(idol) {
+      return model.idols.filter(function(idol) {
         return idol.name.toLowerCase().indexOf(viewModel.searchTerm().toLowerCase()) >= 0;
       }).sort(firstBy(function(idol1, idol2) {
         return idol1.inUse() - idol2.inUse();
@@ -133,7 +132,7 @@ define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'thenBy',
         });
         if('bestCombination' in e.data) {
           viewModel.bestCombination(e.data.bestCombination.map(function(name) {
-            return idols.idolNamed[name];
+            return model.idols.idolNamed[name];
           }));
         }
       };

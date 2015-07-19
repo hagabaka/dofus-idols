@@ -2,16 +2,16 @@ importScripts('require.js');
 
 
 onmessage = function(e) {
-  require(['algorithms', 'idols'], function(algorithms, idols) {
+  require(['model'], function(model) {
     var methods = {
       findBestCombination: function(data) {
         var startingTime = Date.now();
         var timeOfLastMessage = 0;
         var candidates = data.idolNames.map(function(name) {
-          return idols.idolNamed[name];
+          return model.idols.idolNamed[name];
         });
         var bestCombination = [];
-        algorithms.findBestCombination(candidates,
+        model.algorithms.findBestCombination(candidates,
           function(index, total, bestCombination, bestScore) {
             var timeElapsed = Date.now() - startingTime;
             var workDone = index / total;

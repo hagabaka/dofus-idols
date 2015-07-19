@@ -1,23 +1,23 @@
-define(['algorithms'], function(algorithms) {
-  return function(idol, viewModel, ko) {
+define([], function() {
+  return function(idol, model, viewModel, ko) {
     idol.inUse = ko.computed(function() {
       return viewModel.combinationIdols().indexOf(idol) >= 0;
     });
     idol.scoreDelta = ko.computed(function() {
       var currentCombination = viewModel.combinationIdols();
-      var currentScore = algorithms.totalScore(currentCombination);
+      var currentScore = model.algorithms.totalScore(currentCombination);
       if(idol.inUse()) {
         var minusIdol = currentCombination.filter(function(used) {
           return used !== idol;
         });
-        return algorithms.totalScore(minusIdol) - currentScore;
+        return model.algorithms.totalScore(minusIdol) - currentScore;
       } else {
-        return algorithms.totalScore(currentCombination.concat([idol])) - currentScore;
+        return model.algorithms.totalScore(currentCombination.concat([idol])) - currentScore;
       }
     });
     idol.synergyWithExaminedIdol = ko.computed(function() {
       var examinedIdol = viewModel.examinedIdol();
-      return examinedIdol && synergies.between(idol, examinedIdol);
+      return examinedIdol && model.synergies.between(idol, examinedIdol);
     });
     idol.positiveSynergy = ko.computed(function() {
       return idol.synergyWithExaminedIdol() && !idol.synergyWithExaminedIdol().negative || false;
