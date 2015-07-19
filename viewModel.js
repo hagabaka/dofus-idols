@@ -74,11 +74,6 @@ define(['knockout', 'jquery', 'model', 'thenBy',
         viewModel.updateHighlight();
       }
     };
-    this.guessed = ko.computed(function() {
-      return viewModel.synergies().some(function(synergy) {
-        return synergy.guessed;
-      });
-    });
     this.readyForEntry = function() {
       $('#combination-entry').focus();
     };
