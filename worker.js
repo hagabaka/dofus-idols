@@ -1,4 +1,4 @@
-importScripts('require.js');
+importScripts('requirejs/require.js');
 
 
 onmessage = function(e) {
