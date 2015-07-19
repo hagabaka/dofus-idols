@@ -1,4 +1,4 @@
-<div class='container' data-bind='with: $root'>
+<div class='container' data-bind='with: $root.searchWindow'>
   <p data-bind='if: searching'>
   Searching for the best idol combination. This can take a while...</p>
   <p data-bind='ifnot: searching'>Searching stopped</p>
@@ -27,5 +27,5 @@
     <dd data-bind='text: estimatedTimeRemaining'></dd>
   </dl>
   <button data-bind='click: stopSearching, enable: searching'>Stop</button>
-  <button data-bind='click: showSearchWindow(false)'>Close</button>
+  <button data-bind='click: $root.showSearchWindow(false)'>Close</button>
 </div>

@@ -1,5 +1,6 @@
-define(['knockout', 'jquery', 'model', 'thenBy', 'viewModel/idolComponent'],
-  function(ko, $, model, firstBy, extendIdolViewModel) {
+define(['knockout', 'jquery', 'model', 'thenBy', 
+  'viewModel/idolComponent', 'viewModel/searchWindow'],
+  function(ko, $, model, firstBy, extendIdolViewModel, SearchWindow) {
   function ViewModel() {
     var viewModel = this;
 
@@ -81,79 +82,11 @@ define(['knockout', 'jquery', 'model', 'thenBy', 'viewModel/idolComponent'],
     this.readyForEntry = function() {
       $('#combination-entry').focus();
     };
-    this.progressValue = ko.observable();
-    this.progressMax = ko.observable();
-    this.progressPercentage = ko.computed(function() {
-      return (viewModel.progressValue() * 100 / viewModel.progressMax()).toFixed(2) + '%'
-    });
-    this.bestCombination = ko.observable([]);
-    this.bestScore = ko.observable();
     this.searching = ko.observable(false);
-    this.milisecondsElapsed = ko.observable(0);
-    this.estimatedMilisecondsRemaining = ko.observable(0);
-
-    function padToTwoDigits(number) {
-      var string = number.toFixed();
-      if(number < 10) {
-        return '0' + string;
-      } else {
-        return string;
-      }
-    }
-    function formatTime(miliseconds) {
-      var seconds = miliseconds / 1000;
-      var ss = seconds % 60;
-      var minutes = (seconds - ss) / 60;
-      var mm = minutes % 60;
-      var hours = (minutes - mm) / 60;
-
-      return padToTwoDigits(hours) + ':' + padToTwoDigits(mm) + ':' + padToTwoDigits(ss);
-    }
-    this.estimatedTimeRemaining = ko.computed(function() {
-      return formatTime(viewModel.estimatedMilisecondsRemaining());
-    });
-    this.timeElapsed = ko.computed(function() {
-      return formatTime(viewModel.milisecondsElapsed());
-    });
-    ['progressValue', 'progressMax', 'bestCombination', 'bestScore',
-      'milisecondsElapsed', 'estimatedMilisecondsRemaining'].forEach(function(name) {
-      viewModel[name].extend({rateLimit: 500});
-    });
     this.showSearchWindow = ko.observable(false);
-    var worker;
-    function setupWorker() {
-      worker = new Worker('worker.js');
-      worker.onmessage = function(e) {
-        ['progressValue', 'progressMax', 'bestScore', 'searching',
-         'milisecondsElapsed', 'estimatedMilisecondsRemaining'].forEach(function(variable) {
-          if(variable in e.data) {
-            viewModel[variable](e.data[variable]);
-          }
-        });
-        if('bestCombination' in e.data) {
-          viewModel.bestCombination(e.data.bestCombination.map(function(name) {
-            return model.idols.idolNamed[name];
-          }));
-        }
-      };
-    }
+    this.searchWindow = new SearchWindow(model, viewModel, ko);
     this.findBestCombination = function() {
-      viewModel.showSearchWindow(true);
-      if(!viewModel.searching()) {
-        setupWorker();
-        worker.postMessage({method: 'findBestCombination',
-          idolNames: viewModel.visibleIdols().map(function(idol) {
-            return idol.name;
-          }),
-        });
-      }
-      viewModel.searching(true);
-    };
-    this.stopSearching = function() {
-      if(worker) {
-        worker.terminate();
-      }
-      viewModel.searching(false);
+      this.searchWindow.startSearching();
     };
   }
   var viewModel = new ViewModel();
