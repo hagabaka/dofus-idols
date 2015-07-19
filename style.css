@@ -191,6 +191,28 @@ html, body {
   z-index: 10;
 }
 
+progress {
+  width: 100%;
+  height: 2ex;
+}
+progress + .percentage {
+  margin-top: -2ex;
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-shadow: 0 0 0.5em white;
+}
+
+ul.idols > li {
+  display: inline;
+}
+ul.idols > li::after {
+  content: ', ';
+}
+ul.idols > li:last-child::after {
+  content: '';
+}
+
 dl {
   border-top: 1px solid black;
   padding: 1ex 0 0 0;
