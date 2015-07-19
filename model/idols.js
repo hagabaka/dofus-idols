@@ -1,4 +1,4 @@
-define(['idolData', 'utilities'], function(idols, utilities) {
+define(['model/idolData', 'utilities'], function(idols, utilities) {
   var exports = idols;
 
   var idolNamed = {};

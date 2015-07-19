@@ -1,4 +1,4 @@
-define(['idols', 'synergies', 'algorithms'],
+define(['model/idols', 'model/synergies', 'model/algorithms'],
   function(idols, defineSynergies, defineAlgorithms) {
     var synergies = defineSynergies(idols);
     return {
