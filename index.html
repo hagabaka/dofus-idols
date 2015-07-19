@@ -16,15 +16,17 @@
     <div id='search-window' data-bind='component: "searchWindow", visible: showSearchWindow'>
     </div>
 
-    <div id='entry' data-bind='css: {full: combinationIsFull}'>
-      <ul id='combination-idols' data-bind='foreach: combinationIdols'>
+    <div id='entry' data-bind='css: {full: selectedCombination.isFull}'>
+      <ul id='combination-idols' data-bind='foreach: selectedCombination.idols'>
         <li data-bind='component: {name: "idol", params: $data},
           event: {click: removeFromCombination},
           css: {examined: examined}'></li>
       </ul>
+      <!-- ko with: combinationEntry -->
       <input id='combination-entry' type='text' placeholder='Idol name' autofocus
-             data-bind='textInput: searchTerm,
+             data-bind='with: combinationEntry, textInput: searchTerm,
              event: {keydown: handleKey}, style: {width: combinationEntryWidth}'>
+      <!-- /ko -->
       <ul id='idol-menu' data-bind='foreach: visibleIdols, '>
         <li data-bind='component: {name: "idol", params: $data},
           event: {click: putInCombination},
@@ -32,13 +34,13 @@
       </ul>
     </div>
 
-    <div id='display'>
+    <div id='display' data-bind='with: selectedCombination'>
       <span id='score' data-bind='text: score()'></span>
 
-      <input id='combination-display' readonly data-bind='value: combinationEntry'
+      <input id='combination-display' readonly data-bind='value: text'
              onclick="this.select()">
       <h2>Effects</h2>
-      <ul id='effects' data-bind='foreach: combinationIdols'>
+      <ul id='effects' data-bind='foreach: idols'>
         <li data-bind='text: effect'></li>
       </ul>
 

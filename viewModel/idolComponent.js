@@ -1,10 +1,10 @@
 define([], function() {
-  return function(idol, model, viewModel, ko) {
+  return function(idol, model, selectedIdols, viewModel, ko) {
     idol.inUse = ko.computed(function() {
-      return viewModel.combinationIdols().indexOf(idol) >= 0;
+      return selectedIdols().indexOf(idol) >= 0;
     });
     idol.scoreDelta = ko.computed(function() {
-      var currentCombination = viewModel.combinationIdols();
+      var currentCombination = selectedIdols();
       var currentScore = model.algorithms.totalScore(currentCombination);
       if(idol.inUse()) {
         var minusIdol = currentCombination.filter(function(used) {
@@ -26,18 +26,18 @@ define([], function() {
       return idol.synergyWithExaminedIdol() && idol.synergyWithExaminedIdol().negative || false;
     });
     idol.putInCombination = function() {
-      if(!viewModel.combinationIsFull() && !idol.inUse()) {
-        viewModel.combinationIdols.push(idol);
-        viewModel.readyForEntry();
+      if(!viewModel.selectedCombination.isFull() && !idol.inUse()) {
+        selectedIdols.push(idol);
+        viewModel.combinationEntry.readyForEntry();
         return true;
       } else {
         return false;
       }
     };
     idol.removeFromCombination = function() {
-      var index = viewModel.combinationIdols().indexOf(idol);
+      var index = selectedIdols().indexOf(idol);
       if(index >= 0) {
-        viewModel.combinationIdols.splice(index, 1);
+        selectedIdols.splice(index, 1);
         if(viewModel.examinedIdol() === idol) {
           viewModel.examinedIdol(null);
         }
@@ -54,7 +54,7 @@ define([], function() {
       return idol === viewModel.examinedIdol();
     });
     idol.highlighted = ko.computed(function() {
-      return idol === viewModel.highlightedIdol();
+      return idol === viewModel.combinationEntry.chosenCompletion();
     });
   };
 });
