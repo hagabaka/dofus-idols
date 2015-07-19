@@ -7,7 +7,7 @@ requirejs.config({
   }
 });
 
-requirejs(['knockout', 'viewModel', 'domReady!'],
+requirejs(['knockout', 'viewModel'],
 function(ko, viewModel) {
   ko.components.register('idol', {
     template: {require: 'text!./idolComponent.html'}
@@ -16,6 +16,8 @@ function(ko, viewModel) {
     template: {require: 'text!./searchWindow.html'}
   });
 
-  viewModel.activateKO();
+  require(['domReady!'], function() {
+    viewModel.activateKO();
+  });
 });
 

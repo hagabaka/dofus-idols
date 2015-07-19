@@ -1,5 +1,5 @@
 define(['knockout', 'jquery', 'idols', 'synergies', 'algorithms', 'thenBy',
-  'viewModel/idolComponent', 'domReady!'],
+  'viewModel/idolComponent'],
   function(ko, $, idols, synergies, algorithms, firstBy, extendIdolViewModel) {
   function ViewModel() {
     var viewModel = this;
