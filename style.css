@@ -67,7 +67,7 @@ html, body {
 #idol-menu li:not(.in-use) {
   cursor: pointer;
 }
-.full #idol-menu {
+.full #idol-menu, .full #filters {
   display: none;
 }
 #combination-idols li {
