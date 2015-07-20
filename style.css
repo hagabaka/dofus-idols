@@ -184,7 +184,7 @@ html, body {
   background-color: white;
   box-shadow: 0 0 5em 0 black;
   position: fixed;
-  width: 32em;
+  width: 40em;
   left: 50%;
   margin-left: -16em;
   top: 5ex;
@@ -196,7 +196,7 @@ progress {
   width: 100%;
   height: 2ex;
 }
-progress + .percentage {
+progress + .label {
   margin-top: -2ex;
   display: block;
   width: 100%;
@@ -237,7 +237,14 @@ dd::after {
   display: block;
   clear: both;
 }
-
+dd ul.idols {
+  clear: both;
+  text-align: center;
+}
+dd .progress {
+  display: block;
+  text-align: center;
+}
 #filters {
   font-size: smaller;
   margin: 1ex 0 0;

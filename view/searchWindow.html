@@ -15,11 +15,13 @@
     <dd>
     <progress data-bind='attr: {max: progressMax, value: progressValue}'>
     </progress>
-    <span class='percentage' data-bind='text: progressPercentage'></span>
-    (<span data-bind='text: progressValue'></span>
-    of
-    <span data-bind='text: progressMax'></span>
-    combinations)
+    <span class='label'>
+      <span class='percentage' data-bind='text: progressPercentage'></span>
+      (<span data-bind='text: progressValue'></span>
+      of
+      <span data-bind='text: progressMax'></span>
+      combinations)
+    </span>
     </dd>
     <dt>Time elapsed</dt>
     <dd data-bind='text: timeElapsed'></dd>
