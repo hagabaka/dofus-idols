@@ -47,7 +47,12 @@ define([], function() {
     };
     this.combinationEntry = ko.observable('');
     this.combinationEntryWidth = ko.computed(function() {
-      return (96 - viewModel.selectedCombination.idols().length * 16).toString() + '%';
+      var combinationLength = viewModel.selectedCombination.idols().length;
+      if(combinationLength > 0) {
+        return (96 - combinationLength * 16).toString() + '%';
+      } else {
+        return '100%';
+      }
     });
     this.searchTerm = ko.observable('');
   };
