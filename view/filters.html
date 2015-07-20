@@ -1,8 +1,10 @@
 <div class='filters' data-bind='with: $root.filters'>
   <label title='Show only idols with this or higher score'>
-    Score &ge; <input type='number' data-bind='value: minimumScore'></label>
+    Score &ge;
+    <input type='number' min='0' data-bind='value: minimumScore'></label>
   <label title='Show only idols that can be crafted by artificers of this level'>
-    Level &le; <input type='number' data-bind='value: maximumLevel'></label>
+    Level &le;
+    <input type='number' min='1' max='200' data-bind='value: maximumLevel'></label>
   <label title='Show only idols of this grade or higher and all non-family idols'>Grade &ge;
     <select data-bind='value: minimumGrade, foreach: idolGradeList'>
       <option data-bind='text: name, value: value'></option>
