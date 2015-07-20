@@ -12,7 +12,7 @@ define([], function() {
     };
     this.handleKey = function(data, event) {
       if(event.which === 13) { // Enter
-        combinationEntry.selectCompletionChoice();
+        combinationEntry.selectChosenCompletion();
       } else if(event.which === 9) { // Tab
         var chosenIdol = combinationEntry.chosenCompletion();
         var visibleIdols = viewModel.visibleIdols();
@@ -23,7 +23,7 @@ define([], function() {
         }
       } else if(event.which === 8) { // Backspace
         if(combinationEntry.searchTerm().length > 0) {
-          viewModel.updateCompletions();
+          combinationEntry.updateCompletions();
           return true;
         } else {
           if(viewModel.selectedCombination.idols().length > 0) {
@@ -31,7 +31,7 @@ define([], function() {
           }
         }
       } else {
-        viewModel.updateCompletions();
+        combinationEntry.updateCompletions();
         return true;
       }
     };
