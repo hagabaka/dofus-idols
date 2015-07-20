@@ -42,7 +42,7 @@ define([], function() {
           viewModel.examinedIdol(null);
         }
       }
-      viewModel.readyForEntry();
+      viewModel.combinationEntry.readyForEntry();
     };
     idol.examine = function() {
       viewModel.examinedIdol(idol);
