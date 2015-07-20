@@ -6,6 +6,9 @@ requirejs.config({
     underscore: 'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.0/underscore-min',
     text: 'requirejs/text',
     domReady: 'requirejs/domReady',
+  },
+  shim: {
+    lazy: {exports: 'Lazy'}
   }
 });
 
@@ -19,6 +22,7 @@ function(ko, viewModel) {
   });
 
   require(['domReady!'], function() {
+    window.viewModel = viewModel;
     viewModel.activateKO();
   });
 });

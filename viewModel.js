@@ -1,8 +1,8 @@
 define(['knockout', 'jquery', 'model', 'thenBy', 
   'viewModel/selectedCombination', 'viewModel/combinationEntry', 'viewModel/idolComponent',
-  'viewModel/searchWindow'],
+  'viewModel/searchWindow', 'viewModel/filters'],
   function(ko, $, model, firstBy, SelectedCombination, CombinationEntry, extendIdolViewModel,
-    SearchWindow) {
+    SearchWindow, Filters) {
   function ViewModel() {
     var viewModel = this;
 
@@ -17,8 +17,9 @@ define(['knockout', 'jquery', 'model', 'thenBy',
       extendIdolViewModel(idol, model, viewModel.selectedCombination.idols, viewModel, ko);
     });
 
+    this.filters = new Filters(model, viewModel, ko);
     this.visibleIdols = ko.computed(function() {
-      return model.idols.filter(function(idol) {
+      return viewModel.filters.visibleIdols().filter(function(idol) {
         return idol.name.toLowerCase().indexOf(
                viewModel.combinationEntry.searchTerm().toLowerCase()) >= 0;
       }).sort(firstBy(function(idol1, idol2) {
