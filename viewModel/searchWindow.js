@@ -14,7 +14,7 @@ define([], function() {
 
     function padToTwoDigits(number) {
       var string = number.toFixed();
-      if(number < 10) {
+      if(string.length < 2) {
         return '0' + string;
       } else {
         return string;
