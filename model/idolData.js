@@ -69,7 +69,7 @@ return [
   "level": 80,
   "group": false,
   "ineligible": [
-   "Protozooreur"
+   "Protoz'orror"
   ],
   "informationUrl": "http://www.dofus.com//en/mmorpg/encyclopedia/idols/69-aroumb",
   "imageUrl": "http://staticns.ankama.com/dofus/www/game/items/200/178102.w40h.png",
@@ -96,7 +96,7 @@ return [
   "group": false,
   "ineligible": [
    "Royal Mastogob",
-   "Protozoorreur"
+   "Protoz'orror"
   ],
   "informationUrl": "http://www.dofus.com//en/mmorpg/encyclopedia/idols/51-djim",
   "imageUrl": "http://staticns.ankama.com/dofus/www/game/items/200/178101.w40h.png",
@@ -194,7 +194,7 @@ return [
   "level": 130,
   "group": true,
   "ineligible": [
-   "Protozorreur",
+   "Protoz'orror",
    "Korriander"
   ],
   "informationUrl": "http://www.dofus.com//en/mmorpg/encyclopedia/idols/79-ultram",
@@ -209,7 +209,7 @@ return [
   "group": true,
   "ineligible": [
    "Sylargh",
-   "Protozorreur",
+   "Protoz'orror",
    "Obsidemon",
    "Buck Anear",
    "Kimbo",
@@ -723,7 +723,7 @@ return [
   "level": 22,
   "group": false,
   "ineligible": [
-   "Protozorreur"
+   "Protoz'orror"
   ],
   "informationUrl": "http://www.dofus.com//en/mmorpg/encyclopedia/idols/97-minor-kyoub",
   "imageUrl": "http://staticns.ankama.com/dofus/www/game/items/200/178073.w40h.png",
@@ -736,7 +736,7 @@ return [
   "level": 62,
   "group": false,
   "ineligible": [
-   "Protozorreur"
+   "Protoz'orror"
   ],
   "informationUrl": "http://www.dofus.com//en/mmorpg/encyclopedia/idols/98-kyoub",
   "imageUrl": "http://staticns.ankama.com/dofus/www/game/items/200/178074.w40h.png",
@@ -749,7 +749,7 @@ return [
   "level": 102,
   "group": false,
   "ineligible": [
-   "Protozorreur"
+   "Protoz'orror"
   ],
   "informationUrl": "http://www.dofus.com//en/mmorpg/encyclopedia/idols/99-major-kyoub",
   "imageUrl": "http://staticns.ankama.com/dofus/www/game/items/200/178075.w40h.png",
@@ -762,7 +762,7 @@ return [
   "level": 142,
   "group": false,
   "ineligible": [
-   "Protozorreur"
+   "Protoz'orror"
   ],
   "informationUrl": "http://www.dofus.com//en/mmorpg/encyclopedia/idols/100-great-kyoub",
   "imageUrl": "http://staticns.ankama.com/dofus/www/game/items/200/178076.w40h.png",
