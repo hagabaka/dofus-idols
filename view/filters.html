@@ -7,13 +7,15 @@
     </select>
   </label>
 
-  <label><input type='checkbox' data-bind='checked: smallGroup'>
-    <span class='label'>Small group<span></label>
+  <label title='Show only idols usable in smaller than 4v4 fights'>
+    <input type='checkbox' data-bind='checked: smallGroup'>
+    <span class='label'>Small group</span></label>
 
   <ul class='dungeons' data-bind='foreach: dungeonList'>
     <li>
-      <label><input type='checkbox' data-bind='checked: isNeeded'>
-        <span class='label' data-bind='text: name'><span>
+      <label data-bind='attr: {title: "Show only idols usable in fights against " + name}'>
+        <input type='checkbox' data-bind='checked: isNeeded'>
+        <span class='label' data-bind='text: name'></span>
       </label>
     </li>
   </ul>
