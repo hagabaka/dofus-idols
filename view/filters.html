@@ -1,0 +1,21 @@
+<div class='filters' data-bind='with: $root.filters'>
+  <label>Score &ge; <input type='number' data-bind='value: minimumScore'></label>
+  <label>Level &le; <input type='number' data-bind='value: maximumLevel'></label>
+  <label>Grade &ge;
+    <select data-bind='value: minimumGrade, foreach: idolGradeList'>
+      <option data-bind='text: name, value: value'></option>
+    </select>
+  </label>
+
+  <label><input type='checkbox' data-bind='checked: smallGroup'>
+    <span class='label'>Small group<span></label>
+
+  <ul class='dungeons' data-bind='foreach: dungeonList'>
+    <li>
+      <label><input type='checkbox' data-bind='checked: isNeeded'>
+        <span class='label' data-bind='text: name'><span>
+      </label>
+    </li>
+  </ul>
+</div>
+

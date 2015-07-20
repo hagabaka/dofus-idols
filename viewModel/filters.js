@@ -7,9 +7,25 @@ function(idolGrades, Lazy) {
     this.minimumScore = ko.observable(0);
     this.maximumLevel = ko.observable(200);
     this.minimumGrade = ko.observable(idolGrades.Minor);
+    this.idolGradeList = [];
+    for(var name in idolGrades) {
+      this.idolGradeList.push({name: name, value: idolGrades[name]});
+    }
 
     // Eligibility
-    this.neededDungeons = ko.observable([]);
+    this.dungeonList = model.idols.dungeons.map(function (dungeon) {
+      return {
+        name: dungeon,
+        isNeeded: ko.observable(false),
+      };
+    });
+    this.neededDungeons = ko.computed(function() {
+      return filters.dungeonList.filter(function(dungeon) {
+        return dungeon.isNeeded();
+      }).map(function(dungeon) {
+        return dungeon.name;
+      });
+    });
     this.smallGroup = ko.observable(false);
 
     // Idols

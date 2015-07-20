@@ -58,6 +58,7 @@ html, body {
 }
 
 #idol-menu {
+  margin: 0;
   padding: 0;
   max-height: 48ex;
   overflow-y: scroll;
@@ -162,7 +163,7 @@ html, body {
   color: darkgray;
 }
 
-.synergy-value, .score-delta, #effects, #synergies, #notes, #search-window, button {
+.synergy-value, .score-delta, #effects, #synergies, #notes, #search-window, button, label {
   font-family: 'Roboto', sans-serif;
 }
 .name, .score, #score, input, h2, #search-window dt {
@@ -203,11 +204,11 @@ progress + .percentage {
   text-shadow: 0 0 0.5em white;
 }
 
-ul.idols {
+ul.idols, ul.dungeons {
   padding: 0;
   margin: 0;
 }
-ul.idols > li {
+ul.idols > li, ul.dungeons > li {
   display: inline;
 }
 ul.idols > li::after {
@@ -235,4 +236,29 @@ dd::after {
   content: '';
   display: block;
   clear: both;
+}
+
+#filters {
+  font-size: smaller;
+  margin: 1ex 0 0;
+  padding: 0.5em;
+  border-bottom: 1px solid black;
+}
+input[type='number'] {
+  width: 4em;
+}
+input[type='checkbox'] {
+  display: none;
+}
+input[type='checkbox'] + .label {
+  border: 1px solid transparent;
+  cursor: pointer;
+  padding: 0.2ex 0.4em;
+  display: inline-block;
+}
+input[type='checkbox']:checked + .label {
+  border-color: black;
+}
+ul.dungeons {
+  display: inline;
 }

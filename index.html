@@ -27,6 +27,9 @@
              data-bind='with: combinationEntry, textInput: searchTerm,
              event: {keydown: handleKey}, style: {width: combinationEntryWidth}'>
       <!-- /ko -->
+
+      <div id='filters' data-bind='component: "filters"'></div>
+
       <ul id='idol-menu' data-bind='foreach: visibleIdols, '>
         <li data-bind='component: {name: "idol", params: $data},
           event: {click: putInCombination},

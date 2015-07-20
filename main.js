@@ -20,6 +20,9 @@ function(ko, viewModel) {
   ko.components.register('searchWindow', {
     template: {require: 'text!./view/searchWindow.html'}
   });
+  ko.components.register('filters', {
+    template: {require: 'text!./view/filters.html'}
+  });
 
   require(['domReady!'], function() {
     window.viewModel = viewModel;
