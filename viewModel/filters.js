@@ -13,28 +13,24 @@ function(idolGrades, Lazy) {
     }
 
     // Eligibility
-    this.dungeonList = model.idols.dungeons.map(function (dungeon) {
-      return {
-        name: dungeon,
-        isNeeded: ko.observable(false),
-      };
-    });
-    this.neededDungeons = ko.computed(function() {
-      return filters.dungeonList.filter(function(dungeon) {
-        return dungeon.isNeeded();
-      }).map(function(dungeon) {
-        return dungeon.name;
-      });
-    });
+    this.dungeonList = model.idols.dungeons;
+    this.neededDungeons = ko.observableArray([]);
+    var selectedAll = false;
     this.needAllDungeons = ko.computed({
       read: function() {
-        return filters.neededDungeons().length === filters.dungeonList.length;
+        if(selectedAll) {
+          return filters.neededDungeons().length > 0;
+        } else {
+          return filters.neededDungeons().length === filters.dungeonList.length;
+        }
       },
       write: function(value) {
-        filters.dungeonList.forEach(function(dungeon) {
-          dungeon.isNeeded(value);
-        });
-      }
+        selectedAll = value;
+        filters.neededDungeons(
+          value ? filters.dungeonList.slice() : []
+        );
+      },
+      owner: filters
     });
     this.smallGroup = ko.observable(false);
 

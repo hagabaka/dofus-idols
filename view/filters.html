@@ -18,14 +18,14 @@
   <h2>
     <label title='Require/ignore compatibility with all dungeon bosses'>
       <input type='checkbox' data-bind='checked: needAllDungeons'>
-      <span class='label'>All dungeon bosses</span>
+      <span class='label'>Dungeon bosses:</span>
     </label>
   </h2>
   <ul class='dungeons' data-bind='foreach: dungeonList'>
     <li>
-      <label data-bind='attr: {title: "Show only idols usable in fights against " + name}'>
-        <input type='checkbox' data-bind='checked: isNeeded'>
-        <span class='label' data-bind='text: name'></span>
+      <label data-bind='attr: {title: "Show only idols usable in fights against " + $data}'>
+        <input type='checkbox' data-bind='checked: $root.filters.neededDungeons, attr: {value: $data}'>
+        <span class='label' data-bind='text: $data'></span>
       </label>
     </li>
   </ul>
