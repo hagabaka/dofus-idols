@@ -9,24 +9,30 @@
   </head>
 
   <body>
-    <button data-bind='click: findBestCombination, disable: showSearchWindow,
-      text: searching() ? "Searching for the best combination..." :
-      "Find the best combination"'>
-      Find the best combination</button>
+    <nav>
+      <button data-bind='click: findBestCombination, disable: showSearchWindow,
+        text: searching() ? "Searching for the best combination..." :
+        "Find the best combination"'>
+        Find the best combination</button>
+    </nav>
     <div id='search-window' data-bind='component: "searchWindow", visible: showSearchWindow'>
     </div>
 
     <div id='entry' data-bind='css: {full: selectedCombination.isFull}'>
-      <ul id='combination-idols' data-bind='foreach: selectedCombination.idols'>
+      <ul id='combination'>
+        <!-- ko foreach: selectedCombination.idols -->
         <li data-bind='component: {name: "idol", params: $data},
           event: {click: removeFromCombination},
           css: {examined: examined}'></li>
+        <!-- /ko -->
+        <li id='combination-entry'>
+          <!-- ko with: combinationEntry -->
+          <input type='text' placeholder='Idol name' autofocus
+                 data-bind='with: combinationEntry, textInput: searchTerm,
+                 event: {keydown: handleKey}'>
+          <!-- /ko -->
+        </li>
       </ul>
-      <!-- ko with: combinationEntry -->
-      <input id='combination-entry' type='text' placeholder='Idol name' autofocus
-             data-bind='with: combinationEntry, textInput: searchTerm,
-             event: {keydown: handleKey}, style: {width: combinationEntryWidth}'>
-      <!-- /ko -->
 
       <div id='filters' data-bind='component: "filters"'></div>
 
