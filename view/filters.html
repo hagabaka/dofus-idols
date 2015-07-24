@@ -15,6 +15,12 @@
     <input type='checkbox' data-bind='checked: smallGroup'>
     <span class='label'>Small group</span></label>
 
+  <h2>
+    <label title='Require/ignore compatibility with all dungeon bosses'>
+      <input type='checkbox' data-bind='checked: needAllDungeons'>
+      <span class='label'>All dungeon bosses</span>
+    </label>
+  </h2>
   <ul class='dungeons' data-bind='foreach: dungeonList'>
     <li>
       <label data-bind='attr: {title: "Show only idols usable in fights against " + name}'>

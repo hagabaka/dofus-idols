@@ -261,6 +261,11 @@ dd .progress {
   font-size: smaller;
   padding: 0.5em;
 }
+#filters h2 {
+  font-size: 100%;
+  font-weight: normal;
+  display: inline;
+}
 input[type='number'] {
   width: 4em;
 }

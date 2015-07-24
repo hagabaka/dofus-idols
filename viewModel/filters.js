@@ -26,6 +26,16 @@ function(idolGrades, Lazy) {
         return dungeon.name;
       });
     });
+    this.needAllDungeons = ko.computed({
+      read: function() {
+        return filters.neededDungeons().length === filters.dungeonList.length;
+      },
+      write: function(value) {
+        filters.dungeonList.forEach(function(dungeon) {
+          dungeon.isNeeded(value);
+        });
+      }
+    });
     this.smallGroup = ko.observable(false);
 
     // Idols
