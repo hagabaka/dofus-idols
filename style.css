@@ -19,15 +19,15 @@ nav {
 }
 
 #entry {
-  height: 100vh;
+  max-height: 100vh;
   display: flex;
   flex-flow: column;
-  border-right: 1px solid black;
+  box-shadow: 5px 0 6px -6px black;
 }
-#combination, #filters {
+#combination, #filters, #idol-menu {
   flex-grow: 0;
   flex-shrink: 0;
-  border-bottom: 1px solid black;
+  box-shadow: 0 5px 6px -6px black;
 }
 #idol-menu {
   flex-grow: 1;
@@ -44,10 +44,11 @@ nav {
   padding: 0;
   margin: 0;
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
 }
 #combination > li {
-  flex-grow: 0
+  flex-grow: 0;
   flex-shrink: 0;
 }
 #combination > li#combination-entry {
@@ -57,6 +58,10 @@ nav {
 @media (min-width: 60em) {
   #entry {
     width: 60%;
+    height: 100vh;
+  }
+  #idol-menu {
+    box-shadow: none;
   }
   #display {
     position: fixed;
@@ -86,7 +91,7 @@ nav {
 #combination > li, #idol-menu > li {
   border: 0.2ex solid transparent;
   display: inline-block;
-  height: 6ex;
+  min-height: 6ex;
   padding: 0.5ex 0.2em;
   vertical-align: top;
 }
@@ -260,6 +265,7 @@ dd .progress {
 #filters {
   font-size: smaller;
   padding: 0.5em;
+  z-index: 30;
 }
 #filters h2 {
   font-size: 100%;
