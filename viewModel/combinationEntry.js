@@ -46,7 +46,7 @@ define([], function() {
       $('#combination-entry').focus();
     };
     this.combinationEntry = ko.observable('');
-    this.combinationEntryWidth = ko.computed(function() {
+    this.combinationEntryWidth = ko.pureComputed(function() {
       var combinationLength = viewModel.selectedCombination.idols().length;
       if(combinationLength > 0) {
         return (96 - combinationLength * 16).toString() + '%';

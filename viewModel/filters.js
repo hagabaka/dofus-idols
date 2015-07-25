@@ -15,17 +15,17 @@ function(idolGrades, Lazy) {
     // Eligibility
     this.dungeonList = model.idols.dungeons;
     this.neededDungeons = ko.observableArray([]);
-    var selectedAll = false;
-    this.needAllDungeons = ko.computed({
+    this.selectedAll = ko.observable(false);
+    this.needAllDungeons = ko.pureComputed({
       read: function() {
-        if(selectedAll) {
+        if(filters.selectedAll()) {
           return filters.neededDungeons().length > 0;
         } else {
           return filters.neededDungeons().length === filters.dungeonList.length;
         }
       },
       write: function(value) {
-        selectedAll = value;
+        filters.selectedAll(value);
         filters.neededDungeons(
           value ? filters.dungeonList.slice() : []
         );
@@ -38,7 +38,7 @@ function(idolGrades, Lazy) {
     this.additionalIdols = ko.observableArray([]);
     this.excludedIdols = ko.observableArray([]);
 
-    this.visibleIdols = ko.computed(function() {
+    this.visibleIdols = ko.pureComputed(function() {
       return Lazy(model.idols).filter(function(idol) {
         return idol.score >= filters.minimumScore() &&
           idol.level <= filters.maximumLevel() &&

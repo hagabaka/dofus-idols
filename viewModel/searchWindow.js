@@ -4,7 +4,7 @@ define([], function() {
     this.searching = viewModel.searching;
     this.progressValue = ko.observable();
     this.progressMax = ko.observable();
-    this.progressPercentage = ko.computed(function() {
+    this.progressPercentage = ko.pureComputed(function() {
       return (searchWindow.progressValue() * 100 / searchWindow.progressMax()).toFixed(2) + '%'
     });
     this.bestCombination = ko.observable([]);
@@ -29,10 +29,10 @@ define([], function() {
 
       return padToTwoDigits(hours) + ':' + padToTwoDigits(mm) + ':' + padToTwoDigits(ss);
     }
-    this.estimatedTimeRemaining = ko.computed(function() {
+    this.estimatedTimeRemaining = ko.pureComputed(function() {
       return formatTime(searchWindow.estimatedMilisecondsRemaining());
     });
-    this.timeElapsed = ko.computed(function() {
+    this.timeElapsed = ko.pureComputed(function() {
       return formatTime(searchWindow.milisecondsElapsed());
     });
     ['progressValue', 'progressMax', 'bestCombination', 'bestScore',

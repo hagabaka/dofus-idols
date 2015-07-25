@@ -18,7 +18,7 @@ define(['knockout', 'jquery', 'model', 'thenBy',
     });
 
     this.filters = new Filters(model, viewModel, ko);
-    this.visibleIdols = ko.computed(function() {
+    this.visibleIdols = ko.pureComputed(function() {
       return viewModel.filters.visibleIdols().filter(function(idol) {
         return idol.name.toLowerCase().indexOf(
                viewModel.combinationEntry.searchTerm().toLowerCase()) >= 0;
