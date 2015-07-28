@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto+Slab|Roboto);
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab|Roboto|Roboto+Condensed);
 
 * {
   box-sizing: border-box;
@@ -7,6 +7,7 @@ html, body {
   height: 100vh;
   padding: 0;
   margin: 0;
+  font-size: medium;
 }
 
 nav {
@@ -85,8 +86,12 @@ nav {
   }
 }
 
-#display, #notes {
-  font-size: 90%;
+h2 {
+  font-size: medium;
+  font-weight: normal;
+}
+#effects, #synergies, #notes {
+  font-size: smaller;
 }
 
 #combination > li, #idol-menu > li {
@@ -181,11 +186,14 @@ nav {
   color: darkgray;
 }
 
-.synergy-value, .score-delta, #effects, #synergies, #notes, #search-window, button, label {
+.synergy-value, .score-delta, #effects, #synergies, #notes, #search-window, button {
   font-family: 'Roboto', sans-serif;
 }
 .name, .score, #score, input, h2, #search-window dt {
   font-family: 'Roboto Slab', serif;
+}
+#filters, #filters h2 {
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 #search-window {
@@ -280,13 +288,12 @@ input[type='checkbox'] {
   display: none;
 }
 input[type='checkbox'] + .label {
-  border: 1px solid transparent;
   cursor: pointer;
   padding: 0.2ex 0.4em;
   display: inline-block;
 }
 input[type='checkbox']:checked + .label {
-  border-color: black;
+  color: #03A9F4;
 }
 ul.dungeons {
   display: inline;
