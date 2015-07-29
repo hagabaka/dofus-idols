@@ -22,7 +22,6 @@
       <ul id='combination'>
         <!-- ko foreach: selectedCombination.idols -->
         <li data-bind='component: {name: "idol", params: $data},
-          event: {click: removeFromCombination},
           css: {examined: examined}'></li>
         <!-- /ko -->
         <li id='combination-entry'>
@@ -38,7 +37,6 @@
 
       <ul id='idol-menu' data-bind='foreach: visibleIdols, '>
         <li data-bind='component: {name: "idol", params: $data},
-          event: {click: putInCombination},
           css: {"in-use": inUse, highlighted: highlighted, examined: examined}'></li>
       </ul>
     </div>

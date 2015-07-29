@@ -26,6 +26,9 @@ function(ko, viewModel) {
   ko.components.register('displayCombination', {
     template: {require: 'text!./view/displayCombination.html'}
   });
+  ko.components.register('displayIdol', {
+    template: {require: 'text!./view/displayIdol.html'}
+  });
 
   require(['domReady!'], function() {
     window.viewModel = viewModel;

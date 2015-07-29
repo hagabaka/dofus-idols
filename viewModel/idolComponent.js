@@ -25,6 +25,17 @@ define([], function() {
     idol.negativeSynergy = ko.pureComputed(function() {
       return idol.synergyWithExaminedIdol() && idol.synergyWithExaminedIdol().negative || false;
     });
+    idol.select = function() {
+      if(viewModel.currentPage() === 'displayIdol') {
+        viewModel.selectedIdol(idol);
+      } else {
+        if(idol.inUse()) {
+          idol.removeFromCombination();
+        } else {
+          idol.putInCombination();
+        }
+      }
+    };
     idol.putInCombination = function() {
       if(!viewModel.selectedCombination.isFull() && !idol.inUse()) {
         selectedIdols.push(idol);

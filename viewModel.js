@@ -12,6 +12,7 @@ define(['knockout', 'jquery', 'model', 'thenBy',
 
     this.examinedIdol = ko.observable();
     this.examinedIdol.extend({rateLimit: 1000, method: 'notifyWhenChangesStop'});
+    this.selectedIdol = ko.observable();
 
     model.idols.forEach(function(idol) {
       extendIdolViewModel(idol, model, viewModel.selectedCombination.idols, viewModel, ko);
