@@ -18,6 +18,7 @@ onmessage = function(e) {
             var workRemaining = 1 - workDone;
             var speed = workDone / timeElapsed;
             var timeRemaining = timeElapsed * workRemaining / workDone;
+            var combinationsPerSecond = (index / (timeElapsed / 1000)).toFixed();
             if(index === 1 || index === total || timeElapsed - timeOfLastMessage >= 500) {
               postMessage({
                 progressValue: index,
@@ -27,7 +28,8 @@ onmessage = function(e) {
                 }),
                 bestScore: bestScore,
                 milisecondsElapsed: timeElapsed,
-                estimatedMilisecondsRemaining: timeRemaining
+                estimatedMilisecondsRemaining: timeRemaining,
+                combinationsPerSecond: combinationsPerSecond
               });
               timeOfLastMessage = timeElapsed;
             }

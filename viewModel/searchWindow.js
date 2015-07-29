@@ -1,4 +1,4 @@
-define([], function() {
+define(['utilities'], function(utilities) {
   return function SearchWindow(model, viewModel, ko) {
     var searchWindow = this;
     this.searching = viewModel.searching;
@@ -21,6 +21,9 @@ define([], function() {
       }
     }
     function formatTime(miliseconds) {
+      if(isNaN(miliseconds)) {
+        return '';
+      }
       var seconds = miliseconds / 1000;
       var ss = seconds % 60;
       var minutes = (seconds - ss) / 60;
@@ -35,16 +38,14 @@ define([], function() {
     this.timeElapsed = ko.pureComputed(function() {
       return formatTime(searchWindow.milisecondsElapsed());
     });
-    ['progressValue', 'progressMax', 'bestCombination', 'bestScore',
-      'milisecondsElapsed', 'estimatedMilisecondsRemaining'].forEach(function(name) {
-      searchWindow[name].extend({rateLimit: 500});
-    });
+    this.combinationsPerSecond = ko.observable();
     var worker;
     function setupWorker() {
       worker = new Worker('worker.js');
       worker.onmessage = function(e) {
         ['progressValue', 'progressMax', 'bestScore',
-         'milisecondsElapsed', 'estimatedMilisecondsRemaining'].forEach(function(variable) {
+         'milisecondsElapsed', 'estimatedMilisecondsRemaining',
+         'combinationsPerSecond'].forEach(function(variable) {
           if(variable in e.data) {
             searchWindow[variable](e.data[variable]);
           }
@@ -77,6 +78,13 @@ define([], function() {
       }
       this.searching(true);
     };
+    this.numberOfCombinations = ko.pureComputed(function() {
+      return utilities.combinationCount(viewModel.visibleIdols().length, 6)
+    });
+    this.estimatedTime = ko.pureComputed(function() {
+      return formatTime(searchWindow.numberOfCombinations() /
+        searchWindow.combinationsPerSecond() * 1000);
+    });
   };
 });
 

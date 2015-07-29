@@ -15,14 +15,14 @@
   <!-- /ko -->
 
   <dl>
-    <dt>Best combination found so far</dt>
-    <dd>
-    <ul class='idols' data-bind='foreach: bestCombination'>
-      <li data-bind='text: name'></li>
-    </ul>
-    </dd>
-    <dt>Score</dt>
-    <dd data-bind='text: bestScore'></dd>
+    <dt>Total combinations</dt>
+    <dd data-bind='text: numberOfCombinations'></dd>
+
+    <dt>Combinations per second</dt>
+    <dd data-bind='text: combinationsPerSecond'></dd>
+
+    <dt>Estimated time needed<dt>
+    <dd data-bind='text: estimatedTime'></dd>
 
     <!-- ko if: searching -->
     <dt>Search progress</dt>
@@ -42,5 +42,14 @@
     <dt>Estimated time remaining</dt>
     <dd data-bind='text: estimatedTimeRemaining'></dd>
     <!-- /ko -->
+
+    <dt>Best combination found so far</dt>
+    <dd>
+    <ul class='idols' data-bind='foreach: bestCombination'>
+      <li data-bind='text: name'></li>
+    </ul>
+    </dd>
+    <dt>Score</dt>
+    <dd data-bind='text: bestScore'></dd>
   </dl>
 </div>
