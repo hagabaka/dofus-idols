@@ -38,7 +38,7 @@ define(['utilities'], function(utilities) {
     this.timeElapsed = ko.pureComputed(function() {
       return formatTime(searchWindow.milisecondsElapsed());
     });
-    this.combinationsPerSecond = ko.observable();
+    this.combinationsPerSecond = ko.observable(5000);
     var worker;
     function setupWorker() {
       worker = new Worker('worker.js');
