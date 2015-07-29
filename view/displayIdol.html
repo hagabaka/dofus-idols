@@ -1,8 +1,9 @@
-<div id='display-idol' data-bind='with: $root.selectedIdol'>
+<div id='display-idol'>
   <p class='instruction'>
     Select an idol to see its details.
   </p>
 
+  <!-- ko with: $root.selectedIdol -->
   <span class='name' data-bind='text: name'></span>
   <img data-bind='attr: {src: "//thumbor.dofustreasure.net/unsafe/" + imageUrl}'>
   <dl>
@@ -17,5 +18,6 @@
       </ul>
     </dd>
   </dl>
+  <!-- /ko -->
 </div>
 

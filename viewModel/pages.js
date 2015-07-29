@@ -10,7 +10,7 @@ define([], function() {
     },
     {
       name: 'displayIdol',
-      label: 'Idol'
+      label: 'View'
     }
   ];
 });
