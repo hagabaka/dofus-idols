@@ -311,3 +311,7 @@ nav input[type='radio']:checked + .label {
   border-bottom-color: black;
 }
 
+#display-idol img {
+  height: 200px;
+  display: block;
+}
