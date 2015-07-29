@@ -134,9 +134,6 @@ h2 {
 #idol-menu li:not(.in-use) {
   cursor: pointer;
 }
-.full #idol-menu, .full #filters {
-  display: none;
-}
 #combination li {
   cursor: pointer;
 }
