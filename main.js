@@ -23,6 +23,9 @@ function(ko, viewModel) {
   ko.components.register('filters', {
     template: {require: 'text!./view/filters.html'}
   });
+  ko.components.register('displayCombination', {
+    template: {require: 'text!./view/displayCombination.html'}
+  });
 
   require(['domReady!'], function() {
     window.viewModel = viewModel;

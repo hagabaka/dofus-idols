@@ -1,0 +1,24 @@
+<div id='displayCombination' data-bind='with: $root.selectedCombination'>
+  <p class='instruction'>
+  Select idols to see their combined score and other information
+  </p>
+
+  <span id='score' data-bind='text: score()'></span>
+
+  <input id='combination-display' readonly data-bind='value: text'
+  onclick="this.select()">
+  <h2>Effects</h2>
+  <ul id='effects' data-bind='foreach: idols'>
+    <li data-bind='text: effect'></li>
+  </ul>
+
+  <h2>Synergies</h2>
+  <ul id='synergies' data-bind='foreach: synergies()'>
+    <li class='synergy' data-bind='css: {negative: negative}'>
+      <ul class='idol-names' data-bind='foreach: idols'>
+        <li class='idol-name' data-bind='text: name'></li>
+      </ul>
+      <span class='synergy-value' data-bind='text: value'></span>
+    </li>
+  </ul>
+</div>

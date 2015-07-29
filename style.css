@@ -15,6 +15,7 @@ nav {
   top: 0;
   right: 0;
   z-index: 30;
+  width: 100%;
 }
 #combination > li, #idol-menu > li {
   width: 32%;
@@ -38,8 +39,11 @@ nav {
   margin: 0;
   padding: 0;
 }
-#entry, #display {
+#entry {
   padding: 0.5ex 0.5em;
+}
+#display {
+  padding: 6ex 0.5em 0.5ex;
 }
 
 #combination {
@@ -62,6 +66,9 @@ nav {
     width: 60%;
     height: 100vh;
   }
+  nav {
+    width: 40%;
+  }
   #idol-menu {
     box-shadow: none;
   }
@@ -69,6 +76,7 @@ nav {
     position: fixed;
     left: 60%;
     top: 0;
+    right: 0;
   }
   #notes {
     position: fixed;
@@ -90,16 +98,18 @@ h2 {
   font-size: medium;
   font-weight: normal;
 }
-#effects, #synergies, #notes {
+#effects, #synergies, #notes, dd, .instruction {
   font-size: smaller;
 }
 
 #combination > li, #idol-menu > li {
   border: 0.2ex solid transparent;
   display: inline-block;
+  vertical-align: top;
+}
+#combination > li, #idol-menu > li {
   min-height: 6ex;
   padding: 0.5ex 0.2em;
-  vertical-align: top;
 }
 
 #combination > li:hover, #idol-menu > li:hover {
@@ -186,7 +196,7 @@ h2 {
   color: darkgray;
 }
 
-.synergy-value, .score-delta, #effects, #synergies, #notes, #search-window, button {
+html {
   font-family: 'Roboto', sans-serif;
 }
 .name, .score, #score, input, h2, #search-window dt {
@@ -194,28 +204,6 @@ h2 {
 }
 #filters, #filters h2 {
   font-family: 'Roboto Condensed', sans-serif;
-}
-
-#search-window {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  background-color: rgba(0, 0, 0, 0.8);
-}
-#search-window > .container {
-  border: 1px solid black;
-  background-color: white;
-  box-shadow: 0 0 5em 0 black;
-  position: fixed;
-  width: 40em;
-  left: 50%;
-  margin-left: -16em;
-  top: 5ex;
-  padding: 0.5em;
-  z-index: 10;
 }
 
 progress {
@@ -298,3 +286,28 @@ input[type='checkbox']:checked + .label {
 ul.dungeons {
   display: inline;
 }
+
+nav fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0.5em;
+}
+nav fieldset label {
+  display: inline-table;
+  width: 32%;
+  height: 6ex;
+  margin: 0;
+}
+nav input[type='radio'] {
+  display: none;
+}
+nav input[type='radio'] + .label {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  border-bottom: 1px solid transparent;
+}
+nav input[type='radio']:checked + .label {
+  border-bottom-color: black;
+}
+

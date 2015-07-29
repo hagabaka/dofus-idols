@@ -1,8 +1,8 @@
 define(['knockout', 'jquery', 'model', 'thenBy', 
   'viewModel/selectedCombination', 'viewModel/combinationEntry', 'viewModel/idolComponent',
-  'viewModel/searchWindow', 'viewModel/filters'],
+  'viewModel/searchWindow', 'viewModel/filters', 'viewModel/pages'],
   function(ko, $, model, firstBy, SelectedCombination, CombinationEntry, extendIdolViewModel,
-    SearchWindow, Filters) {
+    SearchWindow, Filters, pages) {
   function ViewModel() {
     var viewModel = this;
 
@@ -34,6 +34,9 @@ define(['knockout', 'jquery', 'model', 'thenBy',
     this.findBestCombination = function() {
       this.searchWindow.startSearching();
     };
+
+    this.pages = pages;
+    this.currentPage = ko.observable(pages[0].name);
   }
   var viewModel = new ViewModel();
 
