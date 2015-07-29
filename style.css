@@ -197,7 +197,7 @@ h2 {
 html {
   font-family: 'Roboto', sans-serif;
 }
-.name, .score, #score, input, h2, #search-window dt {
+.name, .score, #score, input, h2, dt {
   font-family: 'Roboto Slab', serif;
 }
 #filters, #filters h2 {
@@ -237,21 +237,20 @@ dl {
 dt {
   float: left;
   clear: left;
+  max-width: 12rem;
 }
 dd {
   border-bottom: 1px solid darkgray;
   margin: 0 0 0.5ex 0;
-  padding: 0 0 0.5ex 0;
+  padding: 0 0 0 12.5rem;
+}
+dd.numeric {
   text-align: right;
 }
 dd::after {
   content: '';
   display: block;
   clear: both;
-}
-dd ul.idols {
-  clear: both;
-  text-align: center;
 }
 dd .progress {
   display: block;

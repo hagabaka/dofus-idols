@@ -16,13 +16,13 @@
 
   <dl>
     <dt>Total combinations</dt>
-    <dd data-bind='text: numberOfCombinations'></dd>
+    <dd class='numeric' data-bind='text: numberOfCombinations'></dd>
 
     <dt>Combinations per second</dt>
-    <dd data-bind='text: combinationsPerSecond'></dd>
+    <dd class='numeric' data-bind='text: combinationsPerSecond'></dd>
 
     <dt>Estimated time needed<dt>
-    <dd data-bind='text: estimatedTime'></dd>
+    <dd class='numeric' data-bind='text: estimatedTime'></dd>
 
     <!-- ko if: searching -->
     <dt>Search progress</dt>
@@ -38,9 +38,9 @@
       </span>
     </dd>
     <dt>Time elapsed</dt>
-    <dd data-bind='text: timeElapsed'></dd>
+    <dd class='numeric' data-bind='text: timeElapsed'></dd>
     <dt>Estimated time remaining</dt>
-    <dd data-bind='text: estimatedTimeRemaining'></dd>
+    <dd class='numeric' data-bind='text: estimatedTimeRemaining'></dd>
     <!-- /ko -->
 
     <dt>Best combination found so far</dt>
@@ -50,6 +50,6 @@
     </ul>
     </dd>
     <dt>Score</dt>
-    <dd data-bind='text: bestScore'></dd>
+    <dd class='numeric' data-bind='text: bestScore'></dd>
   </dl>
 </div>
