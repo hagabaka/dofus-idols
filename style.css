@@ -25,12 +25,13 @@ nav {
   max-height: 100vh;
   display: flex;
   flex-flow: column;
-  box-shadow: 5px 0 6px -6px black;
 }
 #combination, #filters, #idol-menu {
   flex-grow: 0;
   flex-shrink: 0;
-  box-shadow: 0 5px 6px -6px black;
+}
+#combination > li#combination-entry, #filters, #idol-menu {
+  border-bottom: 1px solid darkgray;
 }
 #idol-menu {
   flex-grow: 1;
@@ -44,6 +45,8 @@ nav {
 }
 #display {
   padding: 6ex 0.5em 0.5ex;
+  background-color: white;
+  z-index: 20;
 }
 
 #combination {
@@ -65,12 +68,10 @@ nav {
   #entry {
     width: 60%;
     height: 100vh;
+    border-right: 1px solid darkgray;
   }
   nav {
     width: 40%;
-  }
-  #idol-menu {
-    box-shadow: none;
   }
   #display {
     position: fixed;
@@ -230,7 +231,7 @@ ul.idols > li:last-child::after {
 }
 
 dl {
-  border-top: 1px solid black;
+  border-top: 1px solid darkgray;
   padding: 1ex 0 0 0;
 }
 dt {
@@ -238,7 +239,7 @@ dt {
   clear: left;
 }
 dd {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid darkgray;
   margin: 0 0 0.5ex 0;
   padding: 0 0 0.5ex 0;
   text-align: right;
@@ -286,7 +287,7 @@ ul.dungeons {
 
 nav fieldset {
   border: none;
-  padding: 0;
+  padding: 0.5ex 0 0;
   margin: 0 0.5em;
 }
 nav fieldset label {
@@ -305,7 +306,7 @@ nav input[type='radio'] + .label {
   border-bottom: 1px solid transparent;
 }
 nav input[type='radio']:checked + .label {
-  border-bottom-color: black;
+  border-bottom-color: darkgray;
 }
 
 #display-idol .name {
