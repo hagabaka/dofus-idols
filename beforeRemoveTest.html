@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dofus Idol Calculator</title>
+    <script src='requirejs/require.js' data-main='main.js'></script>
+
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <link href='style.css' rel='stylesheet' />
+  </head>
+
+  <body>
+    <nav>
+      <fieldset data-bind='foreach: pages'>
+        <label>
+          <input type='radio' data-bind='attr: {value: name}, checked: $root.currentPage'>
+          <span class='label' data-bind='text: label'></span>
+        </label>
+      </fieldset>
+    </nav>
+
+    <div id='entry' data-bind='css: {full: selectedCombination.isFull}'>
+      <ul id='combination'>
+        <!-- ko foreach: {
+          data: selectedCombination.idols,
+          afterAdd: animation.addIdolToCombination,
+          beforeRemove: animation.removeIdolFromCombination
+          } -->
+        <li data-bind='component: {name: "idol", params: $data},
+          css: {examined: examined}'></li>
+        <!-- /ko -->
+        <li id='combination-entry'>
+          <!-- ko with: combinationEntry -->
+          <input type='text' placeholder='Idol name' autofocus
+                 data-bind='with: combinationEntry, textInput: searchTerm,
+                 event: {keydown: handleKey}'>
+          <!-- /ko -->
+        </li>
+      </ul>
+
+      <div id='filters' data-bind='component: "filters"'></div>
+
+      <ul id='idol-menu' data-bind='foreach: {
+        data: visibleIdols,
+        afterAdd: animation.addIdolToMenu,
+        beforeRemove: animation.removeIdolFromMenu}'>
+        <li data-bind='component: {name: "idol", params: $data},
+          css: {"in-use": inUse, highlighted: highlighted, examined: examined}'></li>
+      </ul>
+    </div>
+
+    <div id='display' data-bind='component: currentPage'>
+    </div>
+
+    <div id='notes'>
+      <p>This is a calculator for <a href='http://www.dofus.com/'>Dofus</a> idol scores.
+      To enter idols in the above box, type and press Enter. Data is mostly from
+      <a href='http://tofus.fr/fiches/idoles.php'>Tofus.fr</a> and the
+      <a href='http://www.dofus.com/'>Dofus</a> website. Special thanks to Deimos for
+      providing some synergy values and making corrections.</p>
+      <p>I would appreciate feedback and contributions at
+        <a href='https://github.com/hagabaka/dofus-idols/issues'>GitHub</a> or
+        <a href='http://impsvillage.com/forums/topic/147332-work-in-progress-idol-score-calculator/'>ImpsVillage</a>.
+      </p>
+    </div>
+  </body>
+</html>

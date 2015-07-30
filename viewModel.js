@@ -1,8 +1,8 @@
 define(['knockout', 'jquery', 'model', 'thenBy', 
   'viewModel/selectedCombination', 'viewModel/combinationEntry', 'viewModel/idolComponent',
-  'viewModel/searchWindow', 'viewModel/filters', 'viewModel/pages'],
+  'viewModel/searchWindow', 'viewModel/filters', 'viewModel/pages', 'viewModel/animation'],
   function(ko, $, model, firstBy, SelectedCombination, CombinationEntry, extendIdolViewModel,
-    SearchWindow, Filters, pages) {
+    SearchWindow, Filters, pages, Animation) {
   function ViewModel() {
     var viewModel = this;
 
@@ -23,9 +23,9 @@ define(['knockout', 'jquery', 'model', 'thenBy',
       return viewModel.filters.visibleIdols().filter(function(idol) {
         return idol.name.toLowerCase().indexOf(
                viewModel.combinationEntry.searchTerm().toLowerCase()) >= 0;
+      }).filter(function(idol) {
+        return !idol.inUse();
       }).sort(firstBy(function(idol1, idol2) {
-        return idol1.inUse() - idol2.inUse();
-      }).thenBy(function(idol1, idol2) {
         return idol1.scoreDelta() - idol2.scoreDelta();
       }, -1).thenBy('score', -1));
     });
@@ -38,6 +38,8 @@ define(['knockout', 'jquery', 'model', 'thenBy',
 
     this.pages = pages;
     this.currentPage = ko.observable(pages[0].name);
+
+    this.animation = new Animation(model, ko, $);
   }
   var viewModel = new ViewModel();
 
