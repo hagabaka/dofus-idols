@@ -20,11 +20,7 @@
 
     <div id='entry' data-bind='css: {full: selectedCombination.isFull}'>
       <ul id='combination'>
-        <!-- ko foreach: {
-          data: selectedCombination.idols,
-          afterAdd: animation.addIdol,
-          beforeRemove: animation.removeIdol
-          } -->
+        <!-- ko foreach: {data: selectedCombination.idols} -->
         <li data-bind='component: {name: "idol", params: $data},
           css: {examined: examined}'></li>
         <!-- /ko -->
@@ -39,10 +35,7 @@
 
       <div id='filters' data-bind='component: "filters"'></div>
 
-      <ul id='idol-menu' data-bind='foreach: {
-        data: visibleIdols,
-        afterAdd: animation.addIdol,
-        beforeRemove: animation.removeIdol}'>
+      <ul id='idol-menu' data-bind='foreach: {data: visibleIdols}'>
         <li data-bind='component: {name: "idol", params: $data},
           css: {"in-use": inUse, highlighted: highlighted, examined: examined}'></li>
       </ul>
