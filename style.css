@@ -144,6 +144,10 @@ h2 {
 .name {
   display: block;
 }
+
+.synergies .name {
+    display: inline;
+}
 .score, .synergy-value, .score-delta {
   display: inline-block;
   font-size: small;
@@ -184,10 +188,10 @@ h2 {
   width: 100%;
   border: none;
 }
-.synergy-value {
+.synergies .name, .synergy-value {
   color: green;
 }
-.negative .synergy-value {
+.synergies .negative .name, .negative .synergy-value {
   color: red;
 }
 .in-use {
@@ -216,17 +220,22 @@ progress + .label {
   text-shadow: 0 0 0.5em white;
 }
 
-ul.idols, ul.dungeons {
+ul.idols, ul.dungeons, ul.synergies {
   padding: 0;
   margin: 0;
 }
-ul.idols > li, ul.dungeons > li {
+
+ul.synergies .name, ul.synergies .synergy-value {
+    font-size: x-small;
+}
+
+ul.idols > li, ul.dungeons > li, ul.synergies li {
   display: inline;
 }
-ul.idols > li::after {
+#display-idol ul > li::after {
   content: ', ';
 }
-ul.idols > li:last-child::after {
+#display-idol ul > li:last-child::after {
   content: '';
 }
 
@@ -242,7 +251,7 @@ dt {
 dd {
   border-bottom: 1px solid darkgray;
   margin: 0 0 0.5ex 0;
-  padding: 0 0 0 12.5rem;
+  padding: 0 0 0 6rem;
 }
 dd.numeric {
   text-align: right;
@@ -308,7 +317,7 @@ nav input[type='radio']:checked + .label {
   border-bottom-color: darkgray;
 }
 
-#display-idol .name {
+#display-idol > .name {
   display: block;
   text-align: center;
 }

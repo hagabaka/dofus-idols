@@ -1,4 +1,4 @@
-define(['utilities'], function(utilities) {
+define(['utilities', 'thenBy'], function(utilities, firstBy) {
   return function(idols) {
     idols.makeIdolVariables(this);
 
@@ -696,6 +696,14 @@ define(['utilities'], function(utilities) {
     synergies = synergiesTable.elements();
     synergies.forEach(function(synergy) {
       synergy.negative = synergy.value < 1;
+      idols.addSynergy(synergy.idols[0], synergy.idols[1], synergy);
+    });
+    idols.forEach(function(idol) {
+      idol.synergiesWithOtherIdols.sort(firstBy(function(entry) {
+        return entry.synergy.value;
+      }, -1).thenBy(function(entry) {
+        return entry.idol.name;
+      }));
     });
 
     synergies.between = function(idol1, idol2) {

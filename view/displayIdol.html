@@ -11,6 +11,16 @@
     <dt>Level</dt> <dd class='numeric' data-bind='text: level'></dd>
     <dt>Description</dt> <dd data-bind='text: description'></dd>
     <dt>Effect</dt> <dd data-bind='text: effect'></dd>
+
+    <dt>Synergies</dt>
+    <dd>
+      <ul class='synergies' data-bind='foreach: synergiesWithOtherIdols'>
+        <li data-bind='css: {negative: synergy.negative}'>
+          <span class='name' data-bind='text: idol.name'></span>
+          <span class='synergy-value' data-bind='text: synergy.value'></span></li>
+      </ul>
+    </dd>
+
     <dt>Incompatible with</dt>
     <dd>
       <ul class='dungeons' data-bind='foreach: ineligible'>
