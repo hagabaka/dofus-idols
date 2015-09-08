@@ -231,10 +231,10 @@ ul.synergies .name, ul.synergies .synergy-value {
 ul.idols > li, ul.dungeons > li, ul.synergies li {
   display: inline;
 }
-#display-idol ul > li::after {
+#display-idol ul > li::after, #search-window ul > li::after {
   content: ', ';
 }
-#display-idol ul > li:last-child::after {
+#display-idol ul > li:last-child::after, #search-window ul > li:last-child::after {
   content: '';
 }
 
