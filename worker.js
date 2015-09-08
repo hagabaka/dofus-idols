@@ -1,5 +1,5 @@
 importScripts('requirejs/require.js');
-
+importScripts('requirejs/config.js');
 
 onmessage = function(e) {
   require(['model'], function(model) {
