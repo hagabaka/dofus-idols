@@ -325,3 +325,9 @@ nav input[type='radio']:checked + .label {
   display: block;
   margin: 0 auto;
 }
+
+.estimated-time.long {
+  color: red;
+  cursor: help;
+}
+

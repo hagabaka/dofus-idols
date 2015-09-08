@@ -81,9 +81,15 @@ define(['utilities'], function(utilities) {
     this.numberOfCombinations = ko.pureComputed(function() {
       return utilities.combinationCount(viewModel.visibleIdols().length, 6)
     });
+    this.estimatedMiliseconds = ko.pureComputed(function() {
+      return searchWindow.numberOfCombinations() /
+             searchWindow.combinationsPerSecond() * 1000;
+    });
     this.estimatedTime = ko.pureComputed(function() {
-      return formatTime(searchWindow.numberOfCombinations() /
-        searchWindow.combinationsPerSecond() * 1000);
+      return formatTime(searchWindow.estimatedMiliseconds());
+    });
+    this.estimatedTimeIsLong = ko.pureComputed(function() {
+      return searchWindow.estimatedMiliseconds() > 1000 * 60 * 7;
     });
   };
 });

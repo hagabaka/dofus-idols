@@ -22,7 +22,9 @@
     <dd class='numeric' data-bind='text: combinationsPerSecond'></dd>
 
     <dt>Estimated time needed<dt>
-    <dd class='numeric' data-bind='text: estimatedTime'></dd>
+    <dd class='estimated-time numeric'
+        data-bind='text: estimatedTime, css: {long: estimatedTimeIsLong}'
+        title='Apply idol filters first to shorten the needed search time'></dd>
 
     <!-- ko if: searching -->
     <dt>Search progress</dt>
