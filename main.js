@@ -16,8 +16,9 @@ requirejs(['requirejs/config'], function() {requirejs(['knockout', 'viewModel'],
       template: {require: 'text!./view/displayIdol.html'}
     });
   
-    require(['domReady!'], function() {
+    require(['viewModel/hash', 'domReady!',], function(updateViewModelFromHash) {
       window.viewModel = viewModel;
+      updateViewModelFromHash();
       viewModel.activateKO();
     });
   });
