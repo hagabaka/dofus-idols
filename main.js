@@ -1,3 +1,8 @@
+var hostname = 'dofusidols.info';
+if(location.hostname !== hostname) {
+    location.url = location.protocol + '//' + hostname + '/' + location.hash;
+}
+
 requirejs(['requirejs/config'], function() {requirejs(['knockout', 'viewModel'],
   function(ko, viewModel) {
     ko.components.register('idol', {
