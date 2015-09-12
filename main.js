@@ -1,6 +1,6 @@
 var hostname = 'dofusidols.info';
 if(location.hostname !== hostname) {
-    location.url = location.protocol + '//' + hostname + '/' + location.hash;
+  window.location = location.protocol + '//' + hostname + '/' + location.hash;
 }
 
 requirejs(['requirejs/config'], function() {requirejs(['knockout', 'viewModel'],
