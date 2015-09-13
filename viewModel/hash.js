@@ -20,7 +20,9 @@ define(['viewModel', 'model/idols', 'knockout'], function(viewModel, idols, ko) 
         }
         break;
     }
-    return Object.keys(viewState).map(function(key) {
+    return Object.keys(viewState).filter(function(key) {
+      return viewState[key].length > 0;
+    }).map(function(key) {
       return key + '=' + viewState[key];
     }).join('&');
   });
