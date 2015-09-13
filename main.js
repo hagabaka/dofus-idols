@@ -1,5 +1,7 @@
 var hostname = 'dofusidols.info';
-if(location.hostname !== hostname) {
+if(location.hostname !== hostname &&
+   location.hostname != 'localhost' &&
+   location.protocol != 'file:') {
   window.location = location.protocol + '//' + hostname + '/' + location.hash;
 }
 
