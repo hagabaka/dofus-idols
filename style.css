@@ -77,6 +77,11 @@ nav {
     top: 0;
     right: 0;
   }
+  #display > * {
+    max-height: 90vh;
+    overflow-y: auto;
+    border-bottom: 1px solid darkgray;
+  }
   #notes {
     position: fixed;
     bottom: 0;
