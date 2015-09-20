@@ -6,7 +6,6 @@ define([], function() {
     this.selectChosenCompletion = function() {
       if(this.chosenCompletion() &&
          this.chosenCompletion().putInCombination()) {
-        this.searchTerm('');
         this.updateCompletions();
       }
     };
@@ -43,7 +42,8 @@ define([], function() {
       }
     };
     this.readyForEntry = function() {
-      $('#combination-entry').focus();
+      combinationEntry.searchTerm('');
+      $('#combination-entry input').focus();
     };
     this.combinationEntry = ko.observable('');
     this.combinationEntryWidth = ko.pureComputed(function() {
