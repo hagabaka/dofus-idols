@@ -96,7 +96,7 @@ h2 {
   font-size: medium;
   font-weight: normal;
 }
-#effects, #synergies, #notes, dd, .instruction {
+#effects, #synergies, #incompatibilities, #notes, dd, .instruction {
   font-size: smaller;
 }
 
@@ -162,18 +162,28 @@ h2 {
   font-size: xx-large;
   font-weight: bold;
 }
-#synergies ul {
+#synergies ul, #incompatibilities ul {
   list-style: none;
   padding-left: 0;
 }
 .idol-name, .idol-names {
   display: inline;
 }
-.idol-name::after {
+#synergies .idol-name::after {
   content: ' + ';
 }
-.idol-name:last-child::after {
+#synergies .idol-name:last-child::after {
   content: ': ';
+}
+
+#incompatibilities .dungeon::after {
+  content: ': ';
+}
+#incompatibilities .idol-name::after {
+  content: ', ';
+}
+#incompatibilities .idol-name:last-child::after {
+  content: '';
 }
 
 #notes {
@@ -217,7 +227,7 @@ progress + .label {
   text-shadow: 0 0 0.5em white;
 }
 
-ul.idols, ul.dungeons, ul.synergies {
+ul.idols, ul.dungeons, ul.synergies, ul.incompatibilities {
   padding: 0;
   margin: 0;
 }

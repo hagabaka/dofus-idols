@@ -12,6 +12,16 @@
     <li data-bind='text: effect'></li>
   </ul>
 
+  <h2>Incompatible Dungeons</h2>
+  <ul id='incompatibilities' data-bind='foreach: incompatiblities'>
+    <li>
+      <span class='dungeon' data-bind='text: dungeon'></span>
+      <ul class='idol-names' data-bind='foreach: idols'>
+        <li class='idol-name name' data-bind='text: name'></li>
+      </ul>
+    </li>
+  </ul>
+
   <h2>Synergies</h2>
   <ul id='synergies' data-bind='foreach: synergies()'>
     <li class='synergy' data-bind='css: {negative: negative}'>
