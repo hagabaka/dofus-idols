@@ -9,7 +9,7 @@ define([], function() {
         selectedCombination.synergies.push(synergy);
       });
     });
-    this.incompatiblities = ko.pureComputed(function() {
+    this.incompatibilities = ko.pureComputed(function() {
       var result = {};
       selectedCombination.idols().forEach(function(idol) {
         idol.ineligible.forEach(function(dungeon) {

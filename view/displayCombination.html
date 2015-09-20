@@ -3,6 +3,7 @@
   Select idols to see their combined score and other information.
   </p>
 
+  <!-- ko if: idols().length > 0 -->
   <span id='score' data-bind='text: score()'></span>
 
   <input id='combination-display' readonly data-bind='value: text'
@@ -12,8 +13,9 @@
     <li data-bind='text: effect'></li>
   </ul>
 
+  <!-- ko if: incompatibilities().length > 0 -->
   <h2>Incompatible Dungeons</h2>
-  <ul id='incompatibilities' data-bind='foreach: incompatiblities'>
+  <ul id='incompatibilities' data-bind='foreach: incompatibilities'>
     <li>
       <span class='dungeon' data-bind='text: dungeon'></span>
       <ul class='idol-names' data-bind='foreach: idols'>
@@ -21,7 +23,9 @@
       </ul>
     </li>
   </ul>
+  <!-- /ko -->
 
+  <!-- ko if: synergies().length > 0 -->
   <h2>Synergies</h2>
   <ul id='synergies' data-bind='foreach: synergies()'>
     <li class='synergy' data-bind='css: {negative: negative}'>
@@ -31,4 +35,7 @@
       <span class='synergy-value' data-bind='text: value'></span>
     </li>
   </ul>
+  <!-- /ko -->
+
+  <!-- /ko -->
 </div>
