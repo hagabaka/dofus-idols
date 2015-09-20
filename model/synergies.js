@@ -19,7 +19,6 @@ define(['utilities', 'thenBy'], function(utilities, firstBy) {
     {idols: [Dakid,        MinorDagob   ], value: 1.24},
     {idols: [Dakid,        MinorDynamo  ], value: 0.8 },
     {idols: [Dakid,        Muta         ], value: 1.26},
-    {idols: [Dakid,        Nekineko     ], value: 1.33},
     {idols: [Dakid,        Proxima      ], value: 1.10},
     {idols: [Dynamo,       GreatDynamo  ], value: 0.90},
     {idols: [Dynamo,       MajorDynamo  ], value: 0.90},
