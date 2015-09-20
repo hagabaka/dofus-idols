@@ -25,7 +25,9 @@ define(['knockout', 'jquery', 'model', 'thenBy',
                viewModel.combinationEntry.searchTerm().toLowerCase()) >= 0;
       }).filter(function(idol) {
         return !idol.inUse();
-      }).sort(firstBy(function(idol1, idol2) {
+      }).sort(firstBy(function(idol) {
+        return idol.name.toLowerCase().indexOf(viewModel.combinationEntry.searchTerm().toLowerCase());
+      }).thenBy(function(idol1, idol2) {
         return idol1.scoreDelta() - idol2.scoreDelta();
       }, -1).thenBy('score', -1));
     });

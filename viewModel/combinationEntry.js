@@ -17,8 +17,9 @@ define([], function() {
         var visibleIdols = viewModel.visibleIdols();
         if(chosenIdol) {
           var newChosenIndex =
-            (viewModel.visibleIdols.indexOf(chosenIdol) + 1) % viewModel.visibleIdols.length;
-          combinationEntry.chosenCompletion(viewModel.visibleIdols[newHighlightedIndex]);
+            (visibleIdols.indexOf(chosenIdol) + 1) % visibleIdols.length;
+          console.log(newChosenIndex);
+          combinationEntry.chosenCompletion(visibleIdols[newChosenIndex]);
         }
       } else if(event.which === 8) { // Backspace
         if(combinationEntry.searchTerm().length > 0) {
