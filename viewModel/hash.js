@@ -42,6 +42,9 @@ define(['viewModel', 'model/idols', 'knockout'], function(viewModel, idols, ko) 
         }
       });
       console.log(viewState);
+      if('page' in viewState) {
+        viewModel.currentPage(viewState.page);
+      }
       if(viewState.page === 'displayCombination' && 'idolNames' in viewState) {
         var namedIdols = viewState.idolNames.split('+').map(function(name) {
           return idols.idolNamed[respace(name)];
