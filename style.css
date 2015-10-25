@@ -277,11 +277,14 @@ h2 {
 html {
   font-family: 'Roboto', sans-serif;
 }
-.name, #score, input, h2 {
+.name, #score, #combination-entry input, h2 {
   font-family: 'Roboto Slab', serif;
 }
 #filters, #filters h2, ul.synergies .name {
   font-family: 'Roboto Condensed', sans-serif;
+}
+#filters input, #filters select {
+  font: inherit;
 }
 
 progress {
@@ -421,6 +424,10 @@ nav .languages input:checked + .label {
   height: 200px;
   display: block;
   margin: 0 auto;
+}
+#display-idol img, .idol img {
+  background: -webkit-radial-gradient(center, ellipse, hsla(135, 62%, 11%, 0.28) 0%, hsla(135, 62%, 11%, 0) 50%, hsla(135, 62%, 11%, 0) 100%);
+  background: radial-gradient(ellipse at center, hsla(135, 62%, 11%, 0.28) 0%, hsla(135, 62%, 11%, 0) 50%, hsla(135, 62%, 11%, 0) 100%);
 }
 
 .estimated-time.long {
