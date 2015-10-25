@@ -12,6 +12,11 @@
     <dt data-bind='tr'>Description</dt> <dd data-bind='textTr: description'></dd>
     <dt data-bind='tr'>Effect</dt> <dd data-bind='textTr: effect'></dd>
 
+    <dt data-bind='tr'>Group only</dt>
+    <dd class='numeric'>
+      <input class='group-only' type='checkbox' data-bind='checked: group' disabled>
+    </dd>
+
     <dt data-bind='tr'>Synergies</dt>
     <dd>
       <ul class='synergies' data-bind='foreach: synergiesWithOtherIdols'>

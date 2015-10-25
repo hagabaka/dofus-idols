@@ -25,7 +25,9 @@
       </fieldset>
     </nav>
 
-    <div id='entry' data-bind='css: {full: selectedCombination.isFull}'>
+    <div id='entry' data-bind='
+      css: {full: selectedCombination.isFull},
+      attr: {"data-length": selectedCombination.idols().length}'>
       <ul id='combination'>
         <!-- ko foreach: {data: selectedCombination.idols} -->
         <li data-bind='component: {name: "idol", params: $data},
@@ -35,7 +37,7 @@
           <!-- ko with: combinationEntry -->
           <input type='text' placeholder='Idol name' autofocus
                  data-bind='with: combinationEntry, textInput: searchTerm,
-                 event: {keydown: handleKey}', tr: 'placeholder'>
+                 event: {keydown: handleKey}, tr: "placeholder"'>
           <!-- /ko -->
         </li>
       </ul>

@@ -1,4 +1,5 @@
 <div class='idol' data-bind='click: select'>
+  <img data-bind='attr: {src: "//thumbor.dofustreasure.net/unsafe/48x/" + imageUrl}' />
   <span class='name' data-bind='textTr: name'></span>
   <span class='score' title="Score" data-bind='text: score, tr: "title"'></span>
   <!-- ko if: synergyWithExaminedIdol -->
@@ -9,26 +10,5 @@
   <span class='score-delta'
     title="Score increase/decrease if this idol is added/removed"
     data-bind='text: scoreDelta, tr: "title"'></span>
-  <!-- <img  data-bind='attr: {src: imageUrl}' /> -->
-  <dl class='details'>
-    <dt data-bind='tr'>Level</dt>
-    <dd class='level' data-bind='text: level'></dd>
-
-    <dt data-bind='tr'>Description<dt>
-    <dd class='description' data-bind='textTr: description'></dd>
-
-    <dt data-bind='tr'>Effect</dt>
-    <dd class='effect' data-bind='textTr: effect'></dd>
-
-    <dt data-bind='tr'>Group only</dt>
-    <input class='group-only' type='checkbox' data-bind='checked: group' disabled>
-
-    <dt data-bind='tr'>Inelible dungeons</dt>
-    <dd>
-      <ul class='ineligible-dungeons' data-bind='foreach: ineligible'>
-        <li class='dungeon' data-bind='textTr: $data'></li>
-      </ul>
-    </dd>
-  </dl>
 </div>
 
