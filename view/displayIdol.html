@@ -1,30 +1,30 @@
 <div id='display-idol'>
-  <p class='instruction'>
+  <p class='instruction' data-bind='tr'>
     Select an idol to see its details.
   </p>
 
   <!-- ko with: $root.selectedIdol -->
-  <span class='name' data-bind='text: name'></span>
+  <span class='name' data-bind='textTr: name'></span>
   <img data-bind='attr: {src: "//thumbor.dofustreasure.net/unsafe/" + imageUrl}'>
   <dl>
-    <dt>Score</dt> <dd class='numeric' data-bind='text: score'></dd>
-    <dt>Level</dt> <dd class='numeric' data-bind='text: level'></dd>
-    <dt>Description</dt> <dd data-bind='text: description'></dd>
-    <dt>Effect</dt> <dd data-bind='text: effect'></dd>
+    <dt data-bind='tr'>Score</dt> <dd class='numeric' data-bind='text: score'></dd>
+    <dt data-bind='tr'>Level</dt> <dd class='numeric' data-bind='text: level'></dd>
+    <dt data-bind='tr'>Description</dt> <dd data-bind='textTr: description'></dd>
+    <dt data-bind='tr'>Effect</dt> <dd data-bind='textTr: effect'></dd>
 
-    <dt>Synergies</dt>
+    <dt data-bind='tr'>Synergies</dt>
     <dd>
       <ul class='synergies' data-bind='foreach: synergiesWithOtherIdols'>
         <li data-bind='css: {negative: synergy.negative}'>
-          <span class='name' data-bind='text: idol.name'></span>
+          <span class='name' data-bind='textTr: idol.name'></span>
           <span class='synergy-value' data-bind='text: synergy.value'></span></li>
       </ul>
     </dd>
 
-    <dt>Incompatible with</dt>
+    <dt data-bind='tr'>Incompatible with</dt>
     <dd>
       <ul class='dungeons' data-bind='foreach: ineligible'>
-        <li data-bind='text: $data'></li>
+        <li data-bind='textTr: $data'></li>
       </ul>
     </dd>
   </dl>

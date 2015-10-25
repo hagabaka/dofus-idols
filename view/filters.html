@@ -1,31 +1,32 @@
 <div class='filters' data-bind='with: $root.filters'>
-  <label title='Show only idols with this or higher score'>
-    Score &ge;
+  <label data-bind='tr: "title"' title='Show only idols with this or higher score'>
+    <span data-bind='tr'>Score</span> &ge;
     <input type='number' min='0' data-bind='value: minimumScore'></label>
-  <label title='Show only idols that can be crafted by artificers of this level'>
-    Level &le;
+  <label data-bind='tr: "title"' title='Show only idols that can be crafted by artificers of this level'>
+    <span data-bind='tr'>Level</span> &le;
     <input type='number' min='1' max='200' data-bind='value: maximumLevel'></label>
-  <label title='Show only idols of this grade or higher and all non-family idols'>Grade &ge;
+  <label data-bind='tr: "title"' title='Show only idols of this grade or higher and all non-family idols'>
+    <span data-bind='tr'>Grade</span> &ge;
     <select data-bind='value: minimumGrade, foreach: idolGradeList'>
       <option data-bind='text: name, value: value'></option>
     </select>
   </label>
 
-  <label title='Show only idols usable in smaller than 4v4 fights'>
+  <label data-bind='tr: "title"' title='Show only idols usable in smaller than 4v4 fights'>
     <input type='checkbox' data-bind='checked: smallGroup'>
-    <span class='label'>Small group</span></label>
+    <span data-bind='tr' class='label'>Small group</span></label>
 
   <h2>
-    <label title='Require/ignore compatibility with all dungeon bosses'>
+    <label data-bind='tr: "title"' title='Require/ignore compatibility with all dungeon bosses'>
       <input type='checkbox' data-bind='checked: needAllDungeons'>
-      <span class='label'>Dungeon bosses:</span>
+      <span data-bind='tr' class='label'>Dungeon bosses:</span>
     </label>
   </h2>
   <ul class='dungeons' data-bind='foreach: dungeonList'>
     <li>
-      <label data-bind='attr: {title: "Show only idols usable in fights against " + $data}'>
+      <label data-bind='tr: "title"' title='Show only idols usable in fights against this boss'>
         <input type='checkbox' data-bind='checked: $root.filters.neededDungeons, attr: {value: $data}'>
-        <span class='label' data-bind='text: $data'></span>
+        <span class='label' data-bind='textTr: $data'></span>
       </label>
     </li>
   </ul>

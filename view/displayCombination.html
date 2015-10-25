@@ -1,5 +1,5 @@
 <div id='displayCombination' data-bind='with: $root.selectedCombination'>
-  <p class='instruction'>
+  <p data-bind='tr' class='instruction'>
   Select idols to see their combined score and other information.
   </p>
 
@@ -8,18 +8,18 @@
 
   <input id='combination-display' readonly data-bind='value: text'
   onclick="this.select()">
-  <h2>Effects</h2>
+  <h2 data-bind='tr'>Effects</h2>
   <ul id='effects' data-bind='foreach: idols'>
-    <li data-bind='text: effect'></li>
+    <li data-bind='textTr: effect'></li>
   </ul>
 
   <!-- ko if: incompatibilities().length > 0 -->
   <h2>Incompatible Dungeons</h2>
   <ul id='incompatibilities' data-bind='foreach: incompatibilities'>
     <li>
-      <span class='dungeon' data-bind='text: dungeon'></span>
+      <span class='dungeon' data-bind='textTr: dungeon'></span>
       <ul class='idol-names' data-bind='foreach: idols'>
-        <li class='idol-name name' data-bind='text: name'></li>
+        <li class='idol-name name' data-bind='textTr: name'></li>
       </ul>
     </li>
   </ul>
@@ -30,7 +30,7 @@
   <ul id='synergies' data-bind='foreach: synergies()'>
     <li class='synergy' data-bind='css: {negative: negative}'>
       <ul class='idol-names' data-bind='foreach: idols'>
-        <li class='idol-name' data-bind='text: name'></li>
+        <li class='idol-name' data-bind='textTr: name'></li>
       </ul>
       <span class='synergy-value' data-bind='text: value'></span>
     </li>

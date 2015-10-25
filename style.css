@@ -305,12 +305,12 @@ ul.dungeons {
   display: inline;
 }
 
-nav fieldset {
+nav .pages {
   border: none;
   padding: 0.5ex 0 0;
   margin: 0 0.5em;
 }
-nav fieldset label {
+nav .pages label {
   display: inline-table;
   width: 32%;
   height: 6ex;
@@ -319,14 +319,32 @@ nav fieldset label {
 nav input[type='radio'] {
   display: none;
 }
-nav input[type='radio'] + .label {
+nav .pages input[type='radio'] + .label {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
   border-bottom: 1px solid transparent;
 }
-nav input[type='radio']:checked + .label {
+nav .pages input[type='radio']:checked + .label {
   border-bottom-color: darkgray;
+}
+nav .languages {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0;
+  border: 0;
+  color: darkgray;
+}
+nav .languages .label {
+  display: inline-block;
+  padding: 0 0.25em;
+  font-size: x-small;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+nav .languages input:checked + .label {
+  color: black;
 }
 
 #display-idol > .name {

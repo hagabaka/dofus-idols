@@ -42,11 +42,13 @@ define(['knockout', 'jquery', 'model', 'thenBy',
     this.currentPage = ko.observable(pages[0].name);
 
     this.animation = new Animation(model, ko, $);
+
+    this.languages = ['en', 'de', 'es', 'fr', 'it', 'pt'];
   }
   var viewModel = new ViewModel();
 
   viewModel.activateKO = function() {
-    ko.applyBindings(viewModel);
+    ko.applyBindings(viewModel, document.documentElement);
   };
   return viewModel;
 });

@@ -1,57 +1,57 @@
 <div id='search-window' data-bind='with: $root.searchWindow'>
   <!-- ko if: searching -->
-  <p class='instruction'>
+  <p data-bind='tr' class='instruction'>
   Searching for the best idol combination. This can take a while...
   </p>
-  <button data-bind='click: stopSearching'>Stop</button>
+  <button data-bind='click: stopSearching, tr'>Stop</button>
   <!-- /ko -->
 
   <!-- ko ifnot: searching -->
-  <p class='instruction'>
+  <p data-bind='tr' class='instruction'>
   This will look for the combination with the highest score, given the visible idols. To
   shorten the time needed, you should first use filters to show a small subset of idols.
   </p>
-  <button data-bind='click: startSearching'>Start</button>
+  <button data-bind='click: startSearching, tr'>Start</button>
   <!-- /ko -->
 
   <dl>
-    <dt>Total combinations</dt>
+    <dt data-bind='tr'>Total combinations</dt>
     <dd class='numeric' data-bind='text: numberOfCombinations'></dd>
 
-    <dt>Combinations per second</dt>
+    <dt data-bind='tr'>Combinations per second</dt>
     <dd class='numeric' data-bind='text: combinationsPerSecond'></dd>
 
-    <dt>Estimated time needed<dt>
+    <dt data-bind='tr'>Estimated time needed<dt>
     <dd class='estimated-time numeric'
-        data-bind='text: estimatedTime, css: {long: estimatedTimeIsLong}'
+        data-bind='text: estimatedTime, css: {long: estimatedTimeIsLong}, tr: "title"'
         title='Apply idol filters first to shorten the needed search time'></dd>
 
     <!-- ko if: searching -->
-    <dt>Search progress</dt>
+    <dt data-bind='tr'>Search progress</dt>
     <dd>
       <progress data-bind='attr: {max: progressMax, value: progressValue}'>
       </progress>
       <span class='label'>
         <span class='percentage' data-bind='text: progressPercentage'></span>
         (<span data-bind='text: progressValue'></span>
-        of
+        <span data-bind='tr'>of</span>
         <span data-bind='text: progressMax'></span>
-        combinations)
+        <span data-bind='tr'>combinations</span>)
       </span>
     </dd>
-    <dt>Time elapsed</dt>
+    <dt data-bind='tr'>Time elapsed</dt>
     <dd class='numeric' data-bind='text: timeElapsed'></dd>
-    <dt>Estimated time remaining</dt>
+    <dt data-bind='tr'>Estimated time remaining</dt>
     <dd class='numeric' data-bind='text: estimatedTimeRemaining'></dd>
     <!-- /ko -->
 
-    <dt>Best combination found so far</dt>
+    <dt data-bind='tr'>Best combination found so far</dt>
     <dd>
     <ul class='idols' data-bind='foreach: bestCombination'>
-      <li data-bind='text: name'></li>
+      <li data-bind='textTr: name'></li>
     </ul>
     </dd>
-    <dt>Score</dt>
+    <dt data-bind='tr'>Score</dt>
     <dd class='numeric' data-bind='text: bestScore'></dd>
   </dl>
 </div>

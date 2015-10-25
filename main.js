@@ -15,10 +15,26 @@ requirejs(['requirejs/config'], function() {requirejs(['knockout', 'viewModel'],
     ko.components.register('displayIdol', {
       template: {require: 'text!./view/displayIdol.html'}
     });
-  
-    require(['viewModel/hash', 'domReady!',], function(updateViewModelFromHash) {
+
+    require(['viewModel/hash', 'model/translations', 'viewModel/translate', 'domReady!'],
+    function(updateViewModelFromHash, translations, Translator) {
       window.viewModel = viewModel;
       updateViewModelFromHash();
+
+      var preferredLanguage = viewModel.language;
+      if(!preferredLanguage && 'languages' in navigator) {
+        navigator.languages.some(function(language) {
+          if(language in translations) {
+            preferredLanguage = language;
+            return true;
+          }
+        });
+      }
+      var translator = new Translator(translations, preferredLanguage);
+      window.translator = translator;
+      viewModel.language = translator.language;
+      translator.setupBindings();
+
       viewModel.activateKO();
     });
   });

@@ -58,6 +58,9 @@ define(['viewModel', 'model/idols', 'knockout'], function(viewModel, idols, ko) 
       if(viewState.page === 'displayIdol' && 'idolName' in viewState) {
         viewModel.selectedIdol(idols.idolNamed[respace(viewState.idolName)]);
       }
+      if('language' in viewState) {
+        viewModel.language = viewState.language;
+      }
     }
   }
 
