@@ -41,7 +41,6 @@ define(['viewModel', 'model/idols', 'knockout'], function(viewModel, idols, ko) 
           viewState[pair[0]] = pair[1];
         }
       });
-      console.log(viewState);
       if('page' in viewState) {
         viewModel.currentPage(viewState.page);
       }
