@@ -37,22 +37,24 @@ nav {
   overflow: auto;
   margin: 0;
   padding: 0;
+  justify-content: space-between;
 }
 #entry {
   padding: 0.5ex 0.5em;
 }
 #display {
-  padding: 6ex 0.5em 0.5ex;
+  padding: 7ex 0.5em 0.5ex;
   background-color: white;
   z-index: 20;
 }
 
 #combination {
-  padding: 0;
+  padding: 0 1.9rem 0 0;
   margin: 0;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  justify-content: space-between;
 }
 #combination > li {
   flex-grow: 0;
@@ -60,6 +62,7 @@ nav {
 }
 #combination > li#combination-entry {
   flex: 1 1;
+  margin-right: -1.9rem;
 }
 
 @media (min-width: 60em) {
@@ -78,7 +81,7 @@ nav {
     right: 0;
   }
   #display > * {
-    max-height: 90vh;
+    min-height: 70vh;
     overflow-y: auto;
     border-bottom: 1px solid darkgray;
   }
@@ -101,7 +104,7 @@ h2 {
   font-size: medium;
   font-weight: normal;
 }
-#effects, #synergies, #incompatibilities, #notes, dd, .instruction {
+#effects, #synergies, #incompatibilities, #notes, dt, dd, .instruction {
   font-size: smaller;
 }
 
@@ -111,8 +114,8 @@ h2 {
   vertical-align: top;
 }
 #combination > li, #idol-menu > li {
-  min-height: 6ex;
-  padding: 0.5ex 0.2em;
+  min-height: 7ex;
+  padding: 1ex 0.2em;
 }
 
 #combination > li:hover, #idol-menu > li:hover {
@@ -153,6 +156,9 @@ h2 {
 .score, .synergy-value, .score-delta {
   display: inline-block;
   font-size: small;
+}
+.score-delta {
+  color: dimgray;
   cursor: help;
 }
 #idol-menu .score-delta::before {
@@ -213,10 +219,10 @@ h2 {
 html {
   font-family: 'Roboto', sans-serif;
 }
-.name, .score, #score, input, h2, dt {
+.name, #score, input, h2 {
   font-family: 'Roboto Slab', serif;
 }
-#filters, #filters h2 {
+#filters, #filters h2, ul.synergies .name {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
@@ -235,6 +241,7 @@ progress + .label {
 ul.idols, ul.dungeons, ul.synergies, ul.incompatibilities {
   padding: 0;
   margin: 0;
+  display: inline;
 }
 
 ul.synergies .name, ul.synergies .synergy-value {
@@ -252,18 +259,20 @@ ul.idols > li, ul.dungeons > li, ul.synergies li {
 }
 
 dl {
-  border-top: 1px solid darkgray;
   padding: 1ex 0 0 0;
 }
 dt {
   float: left;
   clear: left;
-  max-width: 12rem;
+  max-width: 6rem;
 }
 dd {
   border-bottom: 1px solid darkgray;
   margin: 0 0 0.5ex 0;
-  padding: 0 0 0 6rem;
+  padding: 0 0 0 6.5rem;
+}
+dd:last-child {
+  border-bottom: none;
 }
 dd.numeric {
   text-align: right;
@@ -301,9 +310,6 @@ input[type='checkbox'] + .label {
 input[type='checkbox']:checked + .label {
   color: #03A9F4;
 }
-ul.dungeons {
-  display: inline;
-}
 
 nav .pages {
   border: none;
@@ -313,8 +319,10 @@ nav .pages {
 nav .pages label {
   display: inline-table;
   width: 32%;
-  height: 6ex;
+  height: 7ex;
+  padding-top: 1ex;
   margin: 0;
+  cursor: pointer;
 }
 nav input[type='radio'] {
   display: none;
@@ -334,7 +342,7 @@ nav .languages {
   right: 0;
   padding: 0;
   border: 0;
-  color: darkgray;
+  color: dimgray;
 }
 nav .languages .label {
   display: inline-block;
