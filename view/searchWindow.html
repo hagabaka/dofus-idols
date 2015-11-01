@@ -7,9 +7,13 @@
   <!-- /ko -->
 
   <!-- ko ifnot: searching -->
-  <p data-bind='tr' class='instruction'>
-  This will look for the combination with the highest score, given the visible idols. To
-  shorten the time needed, you should first use filters to show a small subset of idols.
+  <p class='instruction'>
+    <span data-bind='tr'>This will look for the combination with the highest score which can
+      be made using the visible idols. To shorten the time needed, you should first use
+      filters to show a small subset of idols. For example,</span>
+    <button data-bind='tr, click: function() {$root.filters.minimumGrade(3)}'>
+      limit the search to "Great" idols only
+    </button>.
   </p>
   <button data-bind='click: startSearching, tr'>Start</button>
   <!-- /ko -->

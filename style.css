@@ -145,7 +145,6 @@ h2 {
 #effects, #synergies, #incompatibilities, #notes, dt, dd, .instruction {
   font-size: smaller;
 }
-
 #combination > li, #idol-menu > li {
   border: 0.2ex solid transparent;
   display: inline-block;
@@ -283,7 +282,7 @@ html {
 #filters, #filters h2, ul.synergies .name {
   font-family: 'Roboto Condensed', sans-serif;
 }
-#filters input, #filters select {
+#filters input, #filters select, button {
   font: inherit;
 }
 
