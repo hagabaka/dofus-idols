@@ -67,6 +67,12 @@ define([], function() {
     idol.highlighted = ko.pureComputed(function() {
       return idol === viewModel.combinationEntry.chosenCompletion();
     });
+    idol.nameIsLong = ko.pureComputed(function() {
+      var translatedName = viewModel.translator.translate(idol.name)();
+      return translatedName.split(' ').some(function(word) {
+        return word.length > 8;
+      });
+    });
   };
 });
 

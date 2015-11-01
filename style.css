@@ -205,8 +205,11 @@ h2 {
   right: 0;
   left: 3rem;
   bottom: 2ex;
+  font-size: 100%;
 }
-
+.idol .name.long-words {
+  font-size: 90%;
+}
 
 .synergies .name {
     display: inline;

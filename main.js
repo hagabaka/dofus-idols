@@ -31,7 +31,7 @@ requirejs(['requirejs/config'], function() {requirejs(['knockout', 'viewModel'],
         });
       }
       var translator = new Translator(translations, preferredLanguage);
-      window.translator = translator;
+      viewModel.translator = translator;
       viewModel.language = translator.language;
       translator.setupBindings();
 
