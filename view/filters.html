@@ -1,18 +1,18 @@
-<div class='filters' data-bind='with: $root.filters'>
-  <label data-bind='tr: "title"' title='Show only idols with this or higher score'>
+<form class='filters' data-bind='with: $root.filters, event: {reset: $root.filters.updateValues}'>
+  <label data-bind='tr: "title", css: {"is-set": minimumScoreSet}' title='Show only idols with this or higher score'>
     <span data-bind='tr'>Score</span> &ge;
-    <input type='number' min='0' data-bind='value: minimumScore'></label>
-  <label data-bind='tr: "title"' title='Show only idols that can be crafted by artificers of this level'>
+    <input type='number' min='0' value='0' data-bind='value: minimumScore'></label>
+  <label data-bind='tr: "title", css: {"is-set": maximumLevelSet}' title='Show only idols that can be crafted by artificers of this level'>
     <span data-bind='tr'>Level</span> &le;
-    <input type='number' min='1' max='200' data-bind='value: maximumLevel'></label>
-  <label data-bind='tr: "title"' title='Show only idols of this grade or higher and all non-family idols'>
+    <input type='number' min='1' max='200' value='200' data-bind='value: maximumLevel'></label>
+  <label data-bind='tr: "title", css: {"is-set": minimumGradeSet}' title='Show only idols of this grade or higher and all non-family idols'>
     <span data-bind='tr'>Grade</span> &ge;
-    <select data-bind='value: minimumGrade, foreach: idolGradeList'>
-      <option data-bind='text: name, value: value'></option>
+    <select value='0' data-bind='value: minimumGrade, foreach: idolGradeList'>
+      <option data-bind='text: name, value: value, attr: {selected: isLowest}'></option>
     </select>
   </label>
 
-  <label data-bind='tr: "title"' title='Show only idols usable in smaller than 4v4 fights'>
+  <label data-bind='tr: "title", css: {"is-set": smallGroupSet}' title='Show only idols usable in smaller than 4v4 fights'>
     <input type='checkbox' data-bind='checked: smallGroup'>
     <span data-bind='tr' class='label'>Small group</span></label>
 
@@ -22,7 +22,7 @@
       <span data-bind='tr' class='label'>Dungeon bosses:</span>
     </label>
   </h2>
-  <ul class='dungeons' data-bind='foreach: dungeonList'>
+  <ul class='dungeons' data-bind='foreach: dungeonList, css: {"is-set": neededDungeonsSet}'>
     <li>
       <label data-bind='tr: "title"' title='Show only idols usable in fights against this boss'>
         <input type='checkbox' data-bind='checked: $root.filters.neededDungeons, attr: {value: $data}'>
@@ -30,5 +30,6 @@
       </label>
     </li>
   </ul>
-</div>
+  <input type='reset' data-bind='tr: "value"' value='Reset filters'>
+</form>
 

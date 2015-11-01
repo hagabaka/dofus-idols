@@ -5,16 +5,34 @@ function(idolGrades, Lazy) {
 
     // Numbers
     this.minimumScore = ko.observable(0);
+    this.minimumScoreSet = ko.pureComputed(function() {
+      return Number(filters.minimumScore()) !== 0;
+    });
     this.maximumLevel = ko.observable(200);
+    this.maximumLevelSet = ko.pureComputed(function() {
+      return Number(filters.maximumLevel()) !== 200;
+    });
     this.minimumGrade = ko.observable(idolGrades.Minor);
     this.idolGradeList = [];
+    var lowestGrade;
     for(var name in idolGrades) {
-      this.idolGradeList.push({name: name, value: idolGrades[name]});
+      var grade = {name: name, value: idolGrades[name], isLowest: false};
+      this.idolGradeList.push(grade);
+      if(!lowestGrade || grade.value < lowestGrade.value) {
+        lowestGrade = grade;
+      }
     }
+    lowestGrade.isLowest = true;
+    this.minimumGradeSet = ko.pureComputed(function() {
+      return Number(filters.minimumGrade()) !== lowestGrade.value;
+    });
 
     // Eligibility
     this.dungeonList = model.idols.dungeons;
     this.neededDungeons = ko.observableArray([]);
+    this.neededDungeonsSet = ko.pureComputed(function() {
+      return filters.neededDungeons().length > 0;
+    });
     this.selectedAll = ko.observable(false);
     this.needAllDungeons = ko.pureComputed({
       read: function() {
@@ -33,6 +51,9 @@ function(idolGrades, Lazy) {
       owner: filters
     });
     this.smallGroup = ko.observable(false);
+    this.smallGroupSet = ko.pureComputed(function() {
+      return filters.smallGroup();
+    });
 
     // Idols
     this.additionalIdols = ko.observableArray([]);
@@ -47,6 +68,31 @@ function(idolGrades, Lazy) {
           !(idol.group && filters.smallGroup());
       }).union(filters.additionalIdols()).difference(filters.excludedIdols()).toArray();
     });
+
+    this.updateValues = function (data, event) {
+      event.preventDefault();
+      $(event.target).find('option').each(function () {
+        var element = $(this)[0];
+        if (element.defaultSelected != element.selected) {
+          element.selected = element.defaultSelected;
+          $(this).trigger('change');
+        }
+      });
+      $(event.target).find('input, textarea').each(function () {
+        if ($(this).is('input[type="radio"], input[type="checkbox"]')) {
+          if ($(this).is(':checked') !== $(this)[0].defaultChecked) {
+            $(this).val($(this)[0].defaultChecked);
+            $(this).trigger('click');
+            $(this).trigger('change');
+          }
+        } else {
+          if ($(this).val() !== $(this)[0].defaultValue) {
+            $(this).val($(this)[0].defaultValue);
+            $(this).change();
+          }
+        }
+      });
+    };
   };
 });
 

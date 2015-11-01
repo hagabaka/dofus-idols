@@ -349,8 +349,9 @@ dd .progress {
 }
 #filters {
   font-size: smaller;
-  padding: 0.5em;
+  padding: 0.5em 0.5em 0.5em 4em;
   z-index: 30;
+  position: relative;
 }
 #filters h2 {
   font-size: 100%;
@@ -363,13 +364,30 @@ input[type='number'] {
 #filters input[type='checkbox'] {
   display: none;
 }
+#filters label {
+  display: inline-block;
+  padding: 0.2ex 0.5em 0.2ex 0;
+}
 input[type='checkbox'] + .label {
   cursor: pointer;
-  padding: 0.2ex 0.4em;
-  display: inline-block;
 }
-input[type='checkbox']:checked + .label {
+input[type='checkbox']:checked + .label,
+label.is-set,
+.is-set input[type='number'],
+.is-set select,
+.is-set ~ input[type='reset'] {
   color: #03A9F4;
+}
+.is-set select option {
+  color: initial;
+}
+input[type='reset'] {
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  bottom: 0.5em;
+  width: 3.5em;
+  white-space: normal;
 }
 
 nav .pages {
