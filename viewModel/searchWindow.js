@@ -91,6 +91,13 @@ define(['utilities'], function(utilities) {
     this.estimatedTimeIsLong = ko.pureComputed(function() {
       return searchWindow.estimatedMiliseconds() > 1000 * 60 * 7;
     });
+    this.bestCombinationFound = ko.pureComputed(function() {
+      return searchWindow.bestCombination().length > 0;
+    });
+    this.displayFoundCombination = function() {
+      viewModel.selectedCombination.idols(searchWindow.bestCombination());
+      viewModel.currentPage('displayCombination');
+    };
   };
 });
 

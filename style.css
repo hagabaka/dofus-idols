@@ -348,6 +348,20 @@ dd .progress {
   display: block;
   text-align: center;
 }
+#best-combination-found {
+  padding-right: 5em;
+  position: relative;
+}
+#best-combination-found button {
+  position: absolute;
+  right: 0;
+  width: 4.5em;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  white-space: normal;
+}
 #filters {
   font-size: smaller;
   padding: 0.5em 0.5em 0.5em 4em;

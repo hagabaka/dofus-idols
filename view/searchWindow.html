@@ -50,10 +50,11 @@
     <!-- /ko -->
 
     <dt data-bind='tr'>Best combination found so far</dt>
-    <dd>
+    <dd id='best-combination-found'>
     <ul class='idols' data-bind='foreach: bestCombination'>
       <li data-bind='textTr: name'></li>
     </ul>
+    <button data-bind='tr, click: displayFoundCombination, visible: bestCombinationFound'>Display </button>
     </dd>
     <dt data-bind='tr'>Score</dt>
     <dd class='numeric' data-bind='text: bestScore'></dd>
