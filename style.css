@@ -288,10 +288,12 @@ html {
 
 progress {
   width: 100%;
-  height: 2ex;
+  height: 3ex;
 }
 progress + .label {
-  margin-top: -2ex;
+  margin-top: -3ex;
+  height: 3ex;
+  line-height: 3ex;
   display: block;
   width: 100%;
   text-align: center;
