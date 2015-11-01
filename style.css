@@ -61,7 +61,7 @@ nav {
   padding: 0.5ex 0.5em;
 }
 #display {
-  padding: 9ex 0.5em 0.5ex;
+  padding: 9.5ex 0.5em 0.5ex;
   background-color: white;
   z-index: 20;
 }
@@ -120,6 +120,7 @@ nav {
   }
   #display > * {
     min-height: 70vh;
+    max-height: 85vh;
     overflow-y: auto;
     border-bottom: 1px solid darkgray;
   }
@@ -322,16 +323,18 @@ ul.idols > li, ul.dungeons > li, ul.synergies li {
 
 dl {
   padding: 1ex 0 0 0;
+  margin: 0;
 }
 dt {
   float: left;
   clear: left;
   max-width: 6rem;
+  padding: 0.5ex 0;
 }
 dd {
   border-bottom: 1px solid darkgray;
-  margin: 0 0 0.5ex 0;
-  padding: 0 0 0 6.5rem;
+  margin: 0;
+  padding: 0.5ex 0 0.5ex 6.5rem;
 }
 dd:last-child {
   border-bottom: none;
@@ -465,6 +468,7 @@ nav .languages input:checked + .label {
 
 .estimated-time.long {
   color: red;
+  font-weight: bold;
   cursor: help;
 }
 
