@@ -1,6 +1,6 @@
 <div class='idol' data-bind='click: select'>
   <img data-bind='attr: {src: "//thumbor.dofustreasure.net/unsafe/48x/" + imageUrl}' />
-  <span class='name' data-bind='textTr: name, css: {"long-words": nameIsLong}'></span>
+  <span class='name' data-bind='textTr: name, attr: {title: effect}, tr: "title", css: {"long-words": nameIsLong}'></span>
   <span class='score' title="Score" data-bind='text: score, tr: "title"'></span>
   <!-- ko if: synergyWithExaminedIdol -->
   <span class='synergy-value' title="Synergy with selected idol"

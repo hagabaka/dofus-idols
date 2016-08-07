@@ -10,7 +10,10 @@
   onclick="this.select()">
   <h2 data-bind='tr'>Effects</h2>
   <ul id='effects' data-bind='foreach: idols'>
-    <li data-bind='textTr: effect'></li>
+    <li>
+      <span class='name' data-bind='textTr: name'></span>:
+      <span data-bind='textTr: effect'></span>
+    </li>
   </ul>
 
   <!-- ko if: incompatibilities().length > 0 -->
